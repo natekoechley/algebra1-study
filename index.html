@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra 1 Study Site — 13 Topics for the Test</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --card: #ffffff;
+    --ink: #2a2a2a;
+    --soft: #6b6b6b;
+    --accent: #7a4dff;
+    --accent-light: #ede5ff;
+    --green: #2eb27a;
+    --red: #d8553e;
+    --yellow: #f4b942;
+    --border: #e6e0d6;
+    --shadow: 0 2px 8px rgba(50, 30, 0, 0.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    padding: 1.2rem 1rem 0.8rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: white;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  header p {
+    margin: 0.2rem 0 0;
+    color: var(--soft);
+    font-size: 0.9rem;
+  }
+  nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav button {
+    flex-shrink: 0;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+    transition: all 0.15s;
+  }
+  nav button:hover { background: var(--accent-light); }
+  nav button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  main {
+    max-width: 720px;
+    margin: 1rem auto;
+    padding: 0 1rem 4rem;
+  }
+  .view { display: none; }
+  .view.active { display: block; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+  }
+  h2 {
+    margin: 0.2rem 0 0.8rem;
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  h3 {
+    margin: 1.2rem 0 0.4rem;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .topic-list {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+  .topic-item {
+    padding: 0.7rem 0.9rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topic-item:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+  }
+  .topic-num {
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.6rem;
+  }
+  .badge {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .topic-detail {
+    display: none;
+  }
+  .topic-detail.active { display: block; }
+  .back-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .step {
+    padding: 0.6rem 0.9rem;
+    background: #fafafa;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 0.4rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .step-num {
+    font-weight: 700;
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  .formula {
+    background: #f0f0f5;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0.6rem 0;
+  }
+  .trap {
+    background: #fff4e8;
+    border-left: 3px solid var(--yellow);
+    padding: 0.6rem 0.9rem;
+    border-radius: 0 8px 8px 0;
+    margin: 0.4rem 0;
+  }
+  /* PARABOLA */
+  .parabola-controls {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .slider-row label {
+    font-weight: 600;
+    width: 90px;
+    color: var(--accent);
+  }
+  .slider-row input[type=range] { flex: 1; }
+  .slider-row .val {
+    width: 50px;
+    text-align: right;
+    font-family: monospace;
+    color: var(--soft);
+  }
+  #parabola-svg {
+    width: 100%;
+    height: 360px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+  }
+  .form-display {
+    text-align: center;
+    margin: 0.8rem 0;
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+  }
+  .form-display strong { color: var(--accent); }
+  .form-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .form-tabs button {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .form-tabs button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  /* FLASHCARDS */
+  .flashcard {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s;
+    box-shadow: var(--shadow);
+  }
+  .flashcard:active { transform: scale(0.98); }
+  .flashcard .term {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .flashcard .def {
+    font-size: 1rem;
+    color: var(--soft);
+    line-height: 1.6;
+  }
+  .flashcard-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  .flashcard-controls button {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .flashcard-controls button.primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .deck-picker {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .deck-picker button {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .deck-picker button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .progress {
+    color: var(--soft);
+    text-align: center;
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+  }
+  /* QUIZ */
+  .quiz-question {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .quiz-question .q-text {
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .quiz-question .options {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .quiz-question .options button {
+    text-align: left;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  .quiz-question .options button:hover { background: var(--accent-light); }
+  .quiz-question .options button.correct {
+    background: #e3f5ec;
+    border-color: var(--green);
+    color: var(--green);
+    font-weight: 600;
+  }
+  .quiz-question .options button.wrong {
+    background: #fbeae6;
+    border-color: var(--red);
+    color: var(--red);
+  }
+  .feedback {
+    margin-top: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct {
+    background: #e3f5ec;
+    color: var(--green);
+  }
+  .feedback.wrong {
+    background: #fbeae6;
+    color: var(--red);
+  }
+  /* CHEAT SHEET */
+  .search-box {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .cheat-item {
+    background: white;
+    border-left: 3px solid var(--accent);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .cheat-item h4 {
+    margin: 0 0 0.3rem;
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  .cheat-item p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  /* PANIC */
+  .panic-card {
+    background: linear-gradient(135deg, #fff4e8 0%, #ffe8e0 100%);
+    border: 2px solid var(--yellow);
+    padding: 1.5rem;
+    border-radius: 14px;
+    text-align: center;
+  }
+  .panic-card h2 { color: var(--red); }
+  .panic-card ol {
+    text-align: left;
+    padding-left: 1.2rem;
+  }
+  .panic-card li { margin-bottom: 0.4rem; }
+  .day-progress {
+    background: var(--accent-light);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .day-progress strong { color: var(--accent); }
+  ul, ol { padding-left: 1.2rem; }
+  table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; }
+  th, td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { background: var(--accent-light); color: var(--accent); }
+  .footer-tip {
+    margin: 2rem 1rem 1rem;
+    padding: 1rem;
+    background: var(--accent-light);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  /* PRACTICE */
+  .practice-topic-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .practice-topic-btn {
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .practice-topic-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+  .practice-topic-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .practice-topic-num {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .practice-topic-btn.active .practice-topic-num { background: white; color: var(--accent); }
+  .practice-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .practice-controls button {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .practice-controls button.secondary {
+    background: white;
+    color: var(--accent);
+  }
+  .practice-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1rem 0.8rem;
+    margin-bottom: 0.8rem;
+    box-shadow: var(--shadow);
+  }
+  .practice-q {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.4rem 0 0.6rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    line-height: 1.45;
+  }
+  .practice-num {
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+  .solution-toggle {
+    width: 100%;
+    padding: 0.55rem;
+    border: 1px dashed var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+  .solution-toggle:hover { background: var(--accent); color: white; }
+  .solution-page {
+    margin-top: 0.8rem;
+    padding: 1rem;
+    background: #f9f7f3;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .solution-overall {
+    background: white;
+    padding: 0.7rem 0.9rem;
+    border-radius: 6px;
+    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    border-left: 3px solid var(--yellow);
+  }
+  .solution-step {
+    background: white;
+    padding: 0.7rem 0.9rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .solution-step-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    font-size: 0.88rem;
+  }
+  .solution-step-narrative {
+    font-size: 0.87rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.55;
+  }
+  .solution-step-math {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--accent-light);
+    border-radius: 4px;
+    color: var(--accent);
+    word-wrap: break-word;
+  }
+  .solution-answer {
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    background: #e3f5ec;
+    color: var(--green);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .practice-header {
+    text-align: center;
+    margin: 0.8rem 0;
+    color: var(--soft);
+    font-size: 0.85rem;
+  }
+  .practice-header strong { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📐 Algebra 1 Study Site</h1>
+  <p>13 topics. 19 days. You've got this.</p>
+  <p style="font-size: 0.78rem; margin-top: 0.4rem;"><a href="./README.md" style="color: var(--soft); text-decoration: none;">📚 All study materials (Markdown guides, schedule, quizzes) →</a></p>
+</header>
+
+<nav id="main-nav">
+  <button class="active" onclick="showView('home')">🏠 Home</button>
+  <button onclick="showView('topics')">📘 Topics</button>
+  <button onclick="showView('practice')">📝 Practice</button>
+  <button onclick="showView('visualizer')">📈 Parabola</button>
+  <button onclick="showView('flashcards')">🎴 Flashcards</button>
+  <button onclick="showView('quiz')">✅ Quiz</button>
+  <button onclick="showView('cheatsheet')">🚨 Cheat Sheet</button>
+  <button onclick="showView('panic')">😰 Panic</button>
+</nav>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div id="home" class="view active">
+  <div class="day-progress" id="day-progress">
+    Loading day…
+  </div>
+  <div class="card">
+    <h2>What to do today</h2>
+    <p>1. Open the <a href="#" onclick="showView('topics')">Topic</a> for today.</p>
+    <p>2. Read the recipe + steps.</p>
+    <p>3. Do 3 practice problems. Check answers.</p>
+    <p>4. Then practice with the <a href="#" onclick="showView('flashcards')">flashcards</a> for 2 minutes.</p>
+    <p>5. Done. Tomorrow we do the next one.</p>
+  </div>
+  <div class="card">
+    <h2>If you're stuck</h2>
+    <p>👉 Open the <a href="#" onclick="showView('panic')">Panic Card</a>.</p>
+    <p>👉 Or search the <a href="#" onclick="showView('cheatsheet')">Cheat Sheet</a>.</p>
+    <p>👉 Or text Nate a photo of the problem.</p>
+  </div>
+  <div class="card">
+    <h2>Why this kit exists</h2>
+    <p>Mr. Mistry picked 13 specific things you need to know. We don't have to learn everything in algebra — just these. One topic at a time, with the recipe right in front of you. By June 4 you'll be ready.</p>
+  </div>
+</div>
+
+<!-- ============ TOPICS ============ -->
+<div id="topics" class="view">
+  <div id="topic-list-wrap">
+    <h2>The 13 Topics</h2>
+    <p style="color: var(--soft); font-size: 0.9rem;">Tap any topic to see the recipe, steps, and worked examples.</p>
+    <div class="topic-list" id="topic-list"></div>
+  </div>
+  <div id="topic-detail-wrap" style="display:none;">
+    <button class="back-btn" onclick="showTopicList()">← Back to all topics</button>
+    <div id="topic-detail-content"></div>
+  </div>
+</div>
+
+<!-- ============ PRACTICE ============ -->
+<div id="practice" class="view">
+  <h2>📝 Generate Practice Problems</h2>
+  <p style="color: var(--soft); font-size: 0.9rem;">Pick a topic. Get 3 fresh problems. Tap "Show solution" for full step-by-step work with explanations. Hit "New Problems" anytime to generate another set.</p>
+
+  <div class="practice-topic-picker" id="practice-topic-picker"></div>
+
+  <div class="practice-controls">
+    <button onclick="generateNewProblems()">🔄 New Problems</button>
+    <button class="secondary" onclick="showAllSolutions()">📖 Show / Hide All Solutions</button>
+  </div>
+
+  <div id="practice-problems"></div>
+</div>
+
+<!-- ============ VISUALIZER ============ -->
+<div id="visualizer" class="view">
+  <div class="card">
+    <h2>📈 Parabola Visualizer</h2>
+    <p style="color: var(--soft); font-size: 0.9rem;">Slide the values. Watch the parabola change. This builds the visual intuition.</p>
+
+    <div class="form-tabs">
+      <button class="active" onclick="switchForm('standard')">Standard</button>
+      <button onclick="switchForm('vertex')">Vertex</button>
+      <button onclick="switchForm('intercept')">Intercept</button>
+    </div>
+
+    <div class="form-display" id="form-display"></div>
+
+    <div class="parabola-controls" id="controls-standard">
+      <div class="slider-row"><label>a</label><input type="range" id="std-a" min="-3" max="3" step="0.1" value="1"><span class="val" id="std-a-val">1.0</span></div>
+      <div class="slider-row"><label>b</label><input type="range" id="std-b" min="-10" max="10" step="0.5" value="0"><span class="val" id="std-b-val">0.0</span></div>
+      <div class="slider-row"><label>c</label><input type="range" id="std-c" min="-10" max="10" step="0.5" value="0"><span class="val" id="std-c-val">0.0</span></div>
+    </div>
+
+    <div class="parabola-controls" id="controls-vertex" style="display:none;">
+      <div class="slider-row"><label>a</label><input type="range" id="ver-a" min="-3" max="3" step="0.1" value="1"><span class="val" id="ver-a-val">1.0</span></div>
+      <div class="slider-row"><label>h</label><input type="range" id="ver-h" min="-8" max="8" step="0.5" value="0"><span class="val" id="ver-h-val">0.0</span></div>
+      <div class="slider-row"><label>k</label><input type="range" id="ver-k" min="-8" max="8" step="0.5" value="0"><span class="val" id="ver-k-val">0.0</span></div>
+    </div>
+
+    <div class="parabola-controls" id="controls-intercept" style="display:none;">
+      <div class="slider-row"><label>a</label><input type="range" id="int-a" min="-3" max="3" step="0.1" value="1"><span class="val" id="int-a-val">1.0</span></div>
+      <div class="slider-row"><label>p</label><input type="range" id="int-p" min="-8" max="8" step="0.5" value="-2"><span class="val" id="int-p-val">-2.0</span></div>
+      <div class="slider-row"><label>q</label><input type="range" id="int-q" min="-8" max="8" step="0.5" value="2"><span class="val" id="int-q-val">2.0</span></div>
+    </div>
+
+    <svg id="parabola-svg" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid meet"></svg>
+
+    <div id="parabola-info" style="margin-top: 0.8rem; padding: 0.6rem; background: var(--accent-light); border-radius: 8px; font-size: 0.9rem;"></div>
+  </div>
+
+  <div class="card">
+    <h3>Things to try</h3>
+    <ul>
+      <li><strong>Standard form:</strong> Set b=0 and slide c. See the parabola move up and down.</li>
+      <li><strong>Vertex form:</strong> Watch the vertex move when you change h and k. (Notice: h is the OPPOSITE sign of the move direction.)</li>
+      <li><strong>Intercept form:</strong> Slide p and q — see how the roots move with them.</li>
+      <li><strong>All forms:</strong> Make a negative — see the parabola flip upside down.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ FLASHCARDS ============ -->
+<div id="flashcards" class="view">
+  <h2>🎴 Flashcards</h2>
+  <div class="deck-picker" id="deck-picker"></div>
+  <div class="flashcard" id="flashcard" onclick="flipCard()">
+    <div class="term" id="card-content">Loading…</div>
+  </div>
+  <div class="flashcard-controls">
+    <button onclick="prevCard()">← Prev</button>
+    <button class="primary" onclick="flipCard()">Flip</button>
+    <button onclick="nextCard()">Next →</button>
+  </div>
+  <div class="progress" id="card-progress"></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div id="quiz" class="view">
+  <h2>✅ Quick Quizzes</h2>
+  <p style="color: var(--soft); font-size: 0.9rem;">Mini-quizzes by topic. Just enough to check yourself.</p>
+  <div class="deck-picker" id="quiz-picker"></div>
+  <div id="quiz-content"></div>
+  <div class="progress" id="quiz-score"></div>
+</div>
+
+<!-- ============ CHEAT SHEET ============ -->
+<div id="cheatsheet" class="view">
+  <h2>🚨 "I'm Stuck" Cheat Sheet</h2>
+  <input type="text" class="search-box" id="cheat-search" placeholder="Search… e.g. 'factoring' or 'vertex'" oninput="filterCheats()">
+  <div id="cheat-list"></div>
+</div>
+
+<!-- ============ PANIC ============ -->
+<div id="panic" class="view">
+  <div class="panic-card">
+    <h2>🚨 PANIC CARD 🚨</h2>
+    <p>It's okay. Frozen brain happens. Do this in order:</p>
+    <ol>
+      <li><strong>Breathe.</strong> Out longer than in. 3 times.</li>
+      <li><strong>Name the topic.</strong> "This is a ___ problem." Open that topic.</li>
+      <li><strong>Copy the example.</strong> Don't try to remember — just follow the recipe.</li>
+      <li><strong>Still stuck?</strong> Skip it. Move on. Come back.</li>
+      <li><strong>Text Nate.</strong> A photo. He'll send a hint, not the answer.</li>
+    </ol>
+    <p style="margin-top: 1rem;"><strong>Esme's Rule:</strong> Stuck for &gt;3 min = move on. Time is the enemy of confidence.</p>
+  </div>
+  <div class="card" style="margin-top: 1rem;">
+    <h3>Quick "Which method?" decision tree</h3>
+    <table>
+      <tr><th>What the problem says</th><th>What to use</th></tr>
+      <tr><td>Add/subtract polynomials</td><td>Topic 1</td></tr>
+      <tr><td>Multiply or FOIL</td><td>Topic 2</td></tr>
+      <tr><td>"Factor out the GCF"</td><td>Topic 3</td></tr>
+      <tr><td>Factor x² + bx + c</td><td>Topic 4</td></tr>
+      <tr><td>Factor ax² + bx + c</td><td>Topic 5</td></tr>
+      <tr><td>a² − b²</td><td>Topic 6 (Diff Squares)</td></tr>
+      <tr><td>Graph y = ax²</td><td>Topic 7</td></tr>
+      <tr><td>Graph from (x − p)(x − q)</td><td>Topic 8</td></tr>
+      <tr><td>Graph from (x − h)² + k</td><td>Topic 9</td></tr>
+      <tr><td>Solve, factors easily</td><td>Topic 10</td></tr>
+      <tr><td>Solve, looks like (stuff)² = #</td><td>Topic 11</td></tr>
+      <tr><td>Solve by completing square</td><td>Topic 12</td></tr>
+      <tr><td>Solve, anything else</td><td>Topic 13 (Quad Formula — always works)</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer-tip">
+  💜 You can do this. One topic at a time.
+</div>
+
+</main>
+
+<script>
+// ============ DATA ============
+const TOPICS = [
+  { num: 1, name: "Adding & Subtracting Polynomials", section: "7.1", recipe: ["Drop the parentheses (or FLIP signs for subtraction).","Group like terms (same variable + exponent).","Combine the coefficients of each group.","Write in standard form (biggest exponent first)."], formula: "(3x² + 5x − 2) + (x² − 4x + 7) = 4x² + x + 5", mnemonic: "Subtraction = Flip then Add", trap: "When subtracting, flip EVERY sign — including the constant!" },
+  { num: 2, name: "Multiplying Polynomials (FOIL)", section: "7.2", recipe: ["Multiply First terms.","Multiply Outer terms.","Multiply Inner terms.","Multiply Last terms.","Combine like terms (usually the middle two)."], formula: "(x + 4)(x − 3) = x² + x − 12", mnemonic: "FOIL: First, Outer, Inner, Last — say it out loud", trap: "(x + 3)² is (x+3)(x+3) = x² + 6x + 9 — NOT x² + 9!" },
+  { num: 3, name: "Greatest Common Factor (GCF)", section: "—", recipe: ["Find the biggest number that divides all coefficients.","Find the smallest power of x in every term.","Multiply for the GCF.","Divide each term by the GCF; put result in parens.","Check by multiplying back out."], formula: "6x³ + 9x² = 3x²(2x + 3)", mnemonic: "Smallest Power Wins (for variables)", trap: "When a term EQUALS the GCF, it leaves 1 (or −1), not 0!" },
+  { num: 4, name: "Factoring Trinomials Basic (x² + bx + c)", section: "7.5", recipe: ["Check GCF first.","Find two numbers that multiply to c AND add to b.","Write (x + ___)(x + ___) with those numbers.","Check by FOIL."], formula: "x² + 7x + 12 = (x + 3)(x + 4)", mnemonic: "Multiply to c, Add to b", trap: "Sign rules: same signs = both match b's sign. Different signs = bigger one matches b." },
+  { num: 5, name: "Factoring Trinomials Advanced (ax² + bx + c)", section: "7.6", recipe: ["Check GCF first.","Compute a · c.","Find two numbers that multiply to ac AND add to b.","Split the middle term using those numbers.","Factor by grouping.","Pull out the shared parens."], formula: "2x² + 7x + 3 = (2x + 1)(x + 3)", mnemonic: "AC Method: A·C, find, split, group, pull", trap: "If the two groups don't share parens, you split wrong. Try the other sign combo." },
+  { num: 6, name: "Difference of Squares", section: "7.7", recipe: ["Check GCF first.","Confirm: two terms, both perfect squares, separated by a minus.","Identify a and b (square roots).","Write (a + b)(a − b).","Check by FOIL — middle terms cancel."], formula: "x² − 25 = (x + 5)(x − 5)", mnemonic: "Spot, Square root, Split", trap: "Sum of squares (x² + 25) does NOT factor!" },
+  { num: 7, name: "Graphing Basic Parabolas (y = ax²)", section: "8.1", recipe: ["Plot vertex at (0, 0).","Decide direction: a>0 opens up, a<0 opens down.","Decide width: |a|>1 narrower, |a|<1 wider.","Make a table of x = −2,−1,0,1,2.","Plot points and draw smooth U.","Label vertex and axis of symmetry."], formula: "y = 2x² → vertex (0,0), opens up, narrower", mnemonic: "Smile or Frown, then Stretch (positive=smile, big=skinny)", trap: "Parabolas are SMOOTH curves, not V-shaped." },
+  { num: 8, name: "Graphing in Intercept Form", section: "8.5", recipe: ["Identify p and q (WATCH THE SIGN FLIP).","Plot x-intercepts at (p, 0) and (q, 0).","AOS = (p + q) / 2.","Plug AOS x into equation for vertex y.","Direction: a>0 up, a<0 down.","Smooth U through the points."], formula: "y = (x − 1)(x − 5) → roots 1, 5; vertex (3, −4)", mnemonic: "P + Q divided by 2 = AOS", trap: "(x − 3) means root at +3, not −3. The sign FLIPS." },
+  { num: 9, name: "Graphing in Vertex Form", section: "8.4", recipe: ["Identify h and k (WATCH THE SIGN OF h).","Plot vertex at (h, k).","Direction: a>0 up, a<0 down.","Pick 2 x-values on each side of vertex.","Plug in for y. Plot. Smooth U.","Label vertex, AOS x = h."], formula: "y = 2(x − 3)² + 1 → vertex (3, 1), opens up, narrower", mnemonic: "Hidden inside (flips), Kept outside (stays)", trap: "(x + 5)² means h = −5. Sign flips for what's INSIDE the parens." },
+  { num: 10, name: "Solving by Factoring (Zero Product)", section: "7.4", recipe: ["Move everything to one side; other side = 0.","Factor the polynomial.","Set each factor equal to zero.","Solve each mini-equation.","Write BOTH solutions.","Check by plugging back in."], formula: "x² + 5x − 14 = 0 → (x+7)(x−2)=0 → x = −7 or 2", mnemonic: "Equation must equal ZERO before factoring to solve", trap: "Cannot do this with one side ≠ 0. Move everything left first." },
+  { num: 11, name: "Solving by Square Roots", section: "9.3", recipe: ["Isolate the squared part.","Take square root of both sides.","Don't forget ± !","Solve for x.","Simplify if needed."], formula: "(x − 3)² = 16 → x − 3 = ±4 → x = 7 or −1", mnemonic: "Square root means PLUS OR MINUS", trap: "Forgetting the ±. Always two answers!" },
+  { num: 12, name: "Completing the Square", section: "9.4", recipe: ["Move c to right side.","Compute (b/2)² — half of b, squared.","Add (b/2)² to BOTH sides.","Factor left as (x + b/2)².","Take square root, with ±.","Solve for x."], formula: "x² + 6x − 7 = 0 → (x+3)² = 16 → x = 1 or −7", mnemonic: "Half, Square, Add to Both (HSAB)", trap: "Forgetting to add to BOTH sides. Algebra rule!" },
+  { num: 13, name: "The Quadratic Formula", section: "9.5", recipe: ["Get into standard form (= 0).","Identify a, b, c (with signs!).","Compute discriminant: b² − 4ac.","Take square root of discriminant.","x = (−b ± √disc) / 2a","Split into two answers (+ and −)."], formula: "x = (−b ± √(b² − 4ac)) / 2a", mnemonic: "🎵 'Pop Goes the Weasel' — x equals negative b…", trap: "Use parens around negatives: b = −5 → write (−5)², not −5²." }
+];
+
+const FLASHCARDS = {
+  vocab: [
+    { term: "Polynomial", def: "A sum of terms with variables and exponents (e.g., 3x² + 5x − 7)" },
+    { term: "Binomial", def: "A polynomial with 2 terms, like (x + 3)" },
+    { term: "Trinomial", def: "A polynomial with 3 terms, like x² + 7x + 12" },
+    { term: "Coefficient", def: "The number in front of a variable. In 5x, coefficient is 5" },
+    { term: "Like terms", def: "Terms with the SAME variable AND exponent. 3x² and −5x² are like terms." },
+    { term: "Standard form", def: "Terms ordered from biggest exponent to smallest" },
+    { term: "GCF", def: "Greatest Common Factor — biggest term that divides all" },
+    { term: "Factor (verb)", def: "Break a polynomial into a product of smaller pieces" },
+    { term: "Parabola", def: "The U-shaped graph of a quadratic function" },
+    { term: "Vertex", def: "The highest or lowest point of a parabola" },
+    { term: "Axis of symmetry", def: "Vertical line through the vertex; parabola is mirrored on each side" },
+    { term: "x-intercepts (zeros, roots)", def: "Where the parabola crosses the x-axis. Three names, same thing." },
+    { term: "y-intercept", def: "Where the parabola crosses the y-axis (plug in x = 0)" },
+    { term: "Domain", def: "All x-values that work. For quadratics: ALL real numbers." },
+    { term: "Range", def: "All y-values that occur. y ≥ k if opens up; y ≤ k if down." },
+    { term: "Minimum", def: "Vertex y-value when parabola opens UP (lowest y)" },
+    { term: "Maximum", def: "Vertex y-value when parabola opens DOWN (highest y)" },
+    { term: "Difference of squares", def: "a² − b² = (a + b)(a − b). Pattern for two-term factoring." },
+    { term: "Perfect square trinomial", def: "Factors into something squared, like x² + 6x + 9 = (x+3)²" },
+    { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0. Used for solving by factoring." },
+    { term: "Discriminant", def: "b² − 4ac (part under the √ in quadratic formula). Tells how many real solutions." },
+    { term: "Vertex form", def: "y = a(x − h)² + k. Directly shows the vertex (h, k)." },
+    { term: "Standard form (quadratic)", def: "y = ax² + bx + c. Shows the y-intercept (c)." },
+    { term: "Intercept form (factored)", def: "y = a(x − p)(x − q). Directly shows x-intercepts (p, q)." },
+    { term: "Square root", def: "Opposite of squaring. √25 = 5 because 5² = 25." },
+    { term: "± (plus or minus)", def: "Means two answers exist, one positive and one negative" }
+  ],
+  formulas: [
+    { term: "Adding polynomials", def: "Combine like terms (same variable + exponent)" },
+    { term: "FOIL", def: "(a+b)(c+d) = ac + ad + bc + bd" },
+    { term: "Square of a binomial", def: "(a + b)² = a² + 2ab + b²" },
+    { term: "Square of a difference", def: "(a − b)² = a² − 2ab + b²" },
+    { term: "Difference of squares", def: "a² − b² = (a + b)(a − b)" },
+    { term: "Factor x² + bx + c", def: "Find p, q where pq = c and p + q = b → (x + p)(x + q)" },
+    { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0" },
+    { term: "Vertex form", def: "y = a(x − h)² + k → vertex is (h, k)" },
+    { term: "Standard form", def: "y = ax² + bx + c → AOS at x = −b/(2a)" },
+    { term: "Intercept form", def: "y = a(x − p)(x − q) → roots at p and q, AOS at (p+q)/2" },
+    { term: "Square root method", def: "(stuff)² = N → stuff = ±√N" },
+    { term: "Completing the square", def: "Add (b/2)² to both sides of x² + bx = c" },
+    { term: "Quadratic Formula", def: "x = (−b ± √(b² − 4ac)) / 2a" },
+    { term: "Discriminant", def: "b² − 4ac. + = 2 solutions. 0 = 1 sol. − = no real sol." },
+    { term: "Vertex y from standard", def: "Find AOS x = −b/(2a), plug in to get y" }
+  ],
+  traps: [
+    { term: "Trap: (x + 3)²", def: "= x² + 6x + 9, NOT x² + 9. Square = multiply by self, not distribute exponent." },
+    { term: "Trap: Subtracting polynomials", def: "Flip EVERY sign in the second polynomial, including the constant!" },
+    { term: "Trap: Vertex form sign", def: "(x − 3)² → h = +3. (x + 3)² → h = −3. The sign FLIPS." },
+    { term: "Trap: Intercept form sign", def: "(x − 3) means root at +3. (x + 3) means root at −3." },
+    { term: "Trap: Square root method", def: "ALWAYS write ± when taking √. Two answers!" },
+    { term: "Trap: Solving by factoring", def: "MUST set = 0 first. Can't factor and split if right side ≠ 0." },
+    { term: "Trap: a² + b²", def: "Sum of squares does NOT factor in Algebra 1!" },
+    { term: "Trap: GCF leaves −1 or +1", def: "When term equals GCF, it leaves 1 (or −1), not 0!" },
+    { term: "Trap: Combining unlike terms", def: "3x² + 5x is NOT 8x or 8x². Different exponents = stay separate." },
+    { term: "Trap: AC method", def: "Multiply a · c first. Using only c sends you to wrong numbers." },
+    { term: "Trap: Drawing parabolas", def: "Smooth U-curve, NOT a V. The vertex is rounded." },
+    { term: "Trap: Quadratic formula b sign", def: "Use parens: b = −5 → write (−5)², not −5²" },
+    { term: "Trap: Completing the square", def: "Add (b/2)² to BOTH sides, not just left!" },
+    { term: "Trap: Width vs coefficient", def: "BIGGER |a| = NARROWER parabola (counter-intuitive)" },
+    { term: "Trap: Forgetting AOS", def: "Always include axis of symmetry on graphs for full credit" }
+  ]
+};
+
+const CHEAT_ITEMS = [
+  { title: "Subtraction of polynomials", body: "Flip all signs in the second polynomial. Then add. (x²+3x−1) − (x²−2x+5) becomes (x²+3x−1) + (−x²+2x−5) = 5x − 6.", keys: "subtract, minus, polynomial" },
+  { title: "FOIL pattern", body: "(a+b)(c+d) = ac + ad + bc + bd. First, Outer, Inner, Last.", keys: "foil, multiply, binomial" },
+  { title: "Square of a binomial", body: "(a+b)² = a² + 2ab + b². NOT a² + b²!", keys: "square, perfect square, binomial squared" },
+  { title: "Difference of squares pattern", body: "a² − b² = (a+b)(a−b). Spot it when two perfect squares are subtracted.", keys: "difference squares, factor two terms" },
+  { title: "Factoring x² + bx + c", body: "Find two numbers that multiply to c AND add to b. Write (x+__)(x+__).", keys: "factor trinomial, basic factoring" },
+  { title: "Factoring ax² + bx + c (AC method)", body: "Multiply a·c. Find two #s that ×=ac and +=b. Split bx. Group. Factor each pair. Pull out matching parens.", keys: "factor advanced, ac method, leading coefficient" },
+  { title: "Zero Product Property", body: "If ab = 0, then a = 0 or b = 0. Set each factor = 0, solve each.", keys: "zero product, solve, factor" },
+  { title: "Solve quadratic by factoring", body: "1) Move all to one side. 2) Factor. 3) Each factor = 0. 4) Solve each. Two answers.", keys: "solve, factoring" },
+  { title: "Vertex form (h, k)", body: "y = a(x − h)² + k. Vertex at (h, k). Watch sign: (x − 3)² → h = +3, (x + 3)² → h = −3.", keys: "vertex form, graph, parabola" },
+  { title: "Standard form vertex", body: "AOS x = −b/(2a). Plug in to get vertex y. y-intercept is c.", keys: "standard form, vertex from standard, axis of symmetry" },
+  { title: "Intercept form roots", body: "y = a(x − p)(x − q) → roots at +p and +q (sign flips). AOS = (p+q)/2.", keys: "intercept form, factored form, roots" },
+  { title: "Direction of parabola", body: "a > 0 = opens UP (smile, has minimum). a < 0 = opens DOWN (frown, has maximum).", keys: "direction, opens up, opens down, smile frown" },
+  { title: "Width of parabola", body: "|a| > 1 = narrower than y = x². |a| < 1 = wider. |a| = 1 = standard.", keys: "width, narrow, wide" },
+  { title: "Square root method", body: "If (stuff)² = N, then stuff = ±√N. Always ±. Two answers.", keys: "square root, solving, isolate" },
+  { title: "Completing the square", body: "x² + bx = c → add (b/2)² to BOTH sides → factor left as (x + b/2)² → take √ both sides → solve.", keys: "complete the square, completing" },
+  { title: "Quadratic Formula", body: "x = (−b ± √(b² − 4ac)) / 2a. Always works. Memorize cold.", keys: "quadratic formula, universal" },
+  { title: "Discriminant", body: "b² − 4ac. Positive = 2 real solutions. Zero = 1. Negative = none (in Algebra 1).", keys: "discriminant, how many solutions" },
+  { title: "GCF always first", body: "Before any factoring, check: is there a GCF? Pull it out first.", keys: "gcf, greatest common factor, first step" },
+  { title: "Smallest power wins (variable GCF)", body: "When pulling out variable GCF, the exponent is the SMALLEST one in the terms.", keys: "gcf variable, smallest power" }
+];
+
+const QUIZZES = {
+  factoring: {
+    name: "Factoring",
+    questions: [
+      { q: "Factor: x² + 8x + 15", a: ["(x+3)(x+5)", "(x+1)(x+15)", "(x+2)(x+7)", "(x−3)(x−5)"], correct: 0, why: "Need numbers ×15 +8 → 3 and 5." },
+      { q: "Factor: x² − 7x + 12", a: ["(x−3)(x−4)", "(x+3)(x+4)", "(x−2)(x−6)", "(x−1)(x−12)"], correct: 0, why: "Need numbers ×12 +(−7) → −3 and −4 (both negative)." },
+      { q: "Factor: x² − 25", a: ["(x−5)²", "(x+5)(x−5)", "(x−5)(x+25)", "Doesn't factor"], correct: 1, why: "Difference of squares: a² − b² = (a+b)(a−b)." },
+      { q: "Factor: 2x² + 7x + 3", a: ["(2x+3)(x+1)", "(2x+1)(x+3)", "(x+1)(x+3)", "Doesn't factor"], correct: 1, why: "AC method: ac=6, two #s ×6 +7 → 1, 6. Split: 2x²+x+6x+3 = x(2x+1)+3(2x+1)." },
+      { q: "Factor: 3x² + 12x", a: ["3(x² + 4x)", "3x(x + 4)", "x(3x + 12)", "(3x)(x+4)"], correct: 1, why: "GCF = 3x. Divide each term: 3x² ÷ 3x = x, 12x ÷ 3x = 4." }
+    ]
+  },
+  graphing: {
+    name: "Graphing",
+    questions: [
+      { q: "Vertex of y = (x − 4)² + 2?", a: ["(−4, 2)", "(4, 2)", "(4, −2)", "(−4, −2)"], correct: 1, why: "(x − h)² + k → h = +4 (sign flips), k = +2. Vertex (4, 2)." },
+      { q: "Vertex of y = (x + 3)² − 5?", a: ["(3, −5)", "(−3, 5)", "(−3, −5)", "(3, 5)"], correct: 2, why: "(x + 3) means h = −3 (sign flips). k = −5." },
+      { q: "x-intercepts of y = (x − 2)(x + 6)?", a: ["x = −2, 6", "x = 2, −6", "x = 2, 6", "x = −2, −6"], correct: 1, why: "Sign flips: (x − 2) → root at +2. (x + 6) → root at −6." },
+      { q: "Axis of symmetry of y = (x + 1)(x − 9)?", a: ["x = 5", "x = 4", "x = −5", "x = 8"], correct: 1, why: "Roots are −1 and 9. AOS = (−1 + 9)/2 = 4." },
+      { q: "Does y = −2(x − 1)² + 5 open up or down?", a: ["Up", "Down", "Neither", "Can't tell"], correct: 1, why: "a = −2, negative, so opens DOWN. Vertex is the max." }
+    ]
+  },
+  solving: {
+    name: "Solving",
+    questions: [
+      { q: "Solve: x² = 49", a: ["x = 7", "x = ±7", "x = 7 only", "x = −7 only"], correct: 1, why: "Square root method ALWAYS has ±. Two answers: 7 and −7." },
+      { q: "Solve: (x − 3)² = 16", a: ["x = 7 or −1", "x = 7 or 1", "x = 19 or −13", "x = 3 ± 4 (same as A)"], correct: 0, why: "√: x−3 = ±4. So x = 3+4=7 or x = 3−4=−1." },
+      { q: "Solve: x² + 5x − 6 = 0", a: ["x = −1, 6", "x = 1, −6", "x = 1, 6", "x = −1, −6"], correct: 1, why: "Factor: (x−1)(x+6)=0. x = 1 or x = −6." },
+      { q: "Discriminant of x² + 3x + 1?", a: ["13", "5", "−5", "7"], correct: 1, why: "b² − 4ac = 9 − 4(1)(1) = 9 − 4 = 5. Positive → 2 real solutions." },
+      { q: "Best method to solve x² = 81?", a: ["Factoring", "Square root method", "Completing the square", "Quadratic formula"], correct: 1, why: "Square root method is fastest for this form: x = ±9." }
+    ]
+  }
+};
+
+// ============ STATE ============
+let currentDeck = 'vocab';
+let currentCard = 0;
+let isFlipped = false;
+let currentQuiz = 'factoring';
+
+// ============ NAV ============
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => {
+    if (b.textContent.toLowerCase().includes(name) || (name === 'home' && b.textContent.includes('Home'))) {
+      b.classList.add('active');
+    }
+  });
+  window.scrollTo(0, 0);
+}
+
+// ============ HOME / DAY ============
+function getDayInfo() {
+  const start = new Date('2026-05-17');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  start.setHours(0,0,0,0);
+  const diff = Math.floor((today - start) / (24*60*60*1000));
+  const dayNum = diff + 1;
+  const schedule = [
+    "Day 1 (Sun May 17): Topic 1 — Adding/Subtracting Polynomials (with Nate)",
+    "Day 2 (Mon May 18): Topic 2 — Multiplying / FOIL",
+    "Day 3 (Tue May 19): Topic 3 — GCF",
+    "Day 4 (Wed May 20): Topic 4 — Factoring Basic (with Nate)",
+    "Day 5 (Thu May 21): Topic 5 — Factoring Advanced (with Nate)",
+    "Day 6 (Fri May 22): Mini-Quiz #1 — Topics 1–5",
+    "Day 7 (Sat May 23): Topic 6 — Difference of Squares (with Nate)",
+    "Day 8 (Sun May 24): Topic 7 — Basic Parabolas (with Nate)",
+    "Day 9 (Mon May 25): Topic 8 — Intercept Form (with Nate)",
+    "Day 10 (Tue May 26): Topic 9 — Vertex Form (with Nate)",
+    "Day 11 (Wed May 27): Mini-Quiz #2 — Topics 6–9",
+    "Day 12 (Thu May 28): Topic 10 — Solving by Factoring (with Nate)",
+    "Day 13 (Fri May 29): Topic 11 — Square Roots (with Nate)",
+    "Day 14 (Sat May 30): Topic 12 — Completing the Square (with Nate)",
+    "Day 15 (Sun May 31): Topic 13 — Quadratic Formula (with Nate)",
+    "Day 16 (Mon Jun 1): Full Mock Test (with Nate)",
+    "Day 17 (Tue Jun 2): Targeted review of mock-test gaps",
+    "Day 18 (Wed Jun 3): Light review + confidence",
+    "Day 19 (Thu Jun 4): 🎯 TEST DAY"
+  ];
+  if (dayNum < 1) return "Get ready! Plan starts Sun May 17.";
+  if (dayNum > 19) return "Test day or beyond. 💜 You did the work.";
+  return schedule[dayNum - 1];
+}
+document.getElementById('day-progress').innerHTML = "📅 <strong>Today:</strong> " + getDayInfo();
+
+// ============ TOPICS ============
+function renderTopicList() {
+  const list = document.getElementById('topic-list');
+  list.innerHTML = TOPICS.map(t => `
+    <div class="topic-item" onclick="showTopicDetail(${t.num})">
+      <div><span class="topic-num">${t.num}</span><strong>${t.name}</strong></div>
+      <span class="badge">${t.section}</span>
+    </div>
+  `).join('');
+}
+function showTopicList() {
+  document.getElementById('topic-list-wrap').style.display = 'block';
+  document.getElementById('topic-detail-wrap').style.display = 'none';
+}
+function showTopicDetail(num) {
+  const t = TOPICS.find(x => x.num === num);
+  document.getElementById('topic-list-wrap').style.display = 'none';
+  document.getElementById('topic-detail-wrap').style.display = 'block';
+  document.getElementById('topic-detail-content').innerHTML = `
+    <div class="card">
+      <h2><span class="topic-num">${t.num}</span>${t.name}</h2>
+      <span class="badge">Section ${t.section}</span>
+      <h3>📋 The Recipe</h3>
+      ${t.recipe.map((s,i) => `<div class="step"><span class="step-num">${i+1}.</span>${s}</div>`).join('')}
+      <h3>📐 Example</h3>
+      <div class="formula">${t.formula}</div>
+      <h3>🧠 Mnemonic</h3>
+      <p><em>${t.mnemonic}</em></p>
+      <h3>⚠️ Watch out</h3>
+      <div class="trap">${t.trap}</div>
+      <p style="margin-top: 1.2rem; color: var(--soft); font-size: 0.85rem;">For full worked examples and practice problems, open the topic file in your Esme Math Crash Course folder.</p>
+    </div>
+  `;
+}
+renderTopicList();
+
+// ============ PARABOLA ============
+let currentForm = 'standard';
+function switchForm(form) {
+  currentForm = form;
+  document.querySelectorAll('.form-tabs button').forEach((b, i) => {
+    b.classList.toggle('active', ['standard','vertex','intercept'][i] === form);
+  });
+  document.getElementById('controls-standard').style.display = form === 'standard' ? 'grid' : 'none';
+  document.getElementById('controls-vertex').style.display = form === 'vertex' ? 'grid' : 'none';
+  document.getElementById('controls-intercept').style.display = form === 'intercept' ? 'grid' : 'none';
+  drawParabola();
+}
+function drawParabola() {
+  const svg = document.getElementById('parabola-svg');
+  const info = document.getElementById('parabola-info');
+  const fd = document.getElementById('form-display');
+  let a, b, c, h, k, p, q;
+  let pts = [], formula = '';
+  if (currentForm === 'standard') {
+    a = parseFloat(document.getElementById('std-a').value);
+    b = parseFloat(document.getElementById('std-b').value);
+    c = parseFloat(document.getElementById('std-c').value);
+    document.getElementById('std-a-val').textContent = a.toFixed(1);
+    document.getElementById('std-b-val').textContent = b.toFixed(1);
+    document.getElementById('std-c-val').textContent = c.toFixed(1);
+    fd.innerHTML = `<strong>y = ${a}x² + ${b >= 0 ? '+' : ''}${b}x + ${c >= 0 ? '+' : ''}${c}</strong>`;
+    if (a !== 0) {
+      const aos = -b / (2 * a);
+      const ky = a * aos * aos + b * aos + c;
+      info.innerHTML = `Vertex: <strong>(${aos.toFixed(2)}, ${ky.toFixed(2)})</strong> · AOS: <strong>x = ${aos.toFixed(2)}</strong> · Opens: <strong>${a > 0 ? 'up' : 'down'}</strong>`;
+    } else info.innerHTML = 'a cannot be 0 for a parabola';
+  } else if (currentForm === 'vertex') {
+    a = parseFloat(document.getElementById('ver-a').value);
+    h = parseFloat(document.getElementById('ver-h').value);
+    k = parseFloat(document.getElementById('ver-k').value);
+    document.getElementById('ver-a-val').textContent = a.toFixed(1);
+    document.getElementById('ver-h-val').textContent = h.toFixed(1);
+    document.getElementById('ver-k-val').textContent = k.toFixed(1);
+    fd.innerHTML = `<strong>y = ${a}(x ${h >= 0 ? '−' : '+'} ${Math.abs(h)})² ${k >= 0 ? '+' : ''}${k}</strong>`;
+    info.innerHTML = `Vertex: <strong>(${h}, ${k})</strong> · AOS: <strong>x = ${h}</strong> · Opens: <strong>${a > 0 ? 'up' : 'down'}</strong>`;
+  } else {
+    a = parseFloat(document.getElementById('int-a').value);
+    p = parseFloat(document.getElementById('int-p').value);
+    q = parseFloat(document.getElementById('int-q').value);
+    document.getElementById('int-a-val').textContent = a.toFixed(1);
+    document.getElementById('int-p-val').textContent = p.toFixed(1);
+    document.getElementById('int-q-val').textContent = q.toFixed(1);
+    fd.innerHTML = `<strong>y = ${a}(x ${p >= 0 ? '−' : '+'} ${Math.abs(p)})(x ${q >= 0 ? '−' : '+'} ${Math.abs(q)})</strong>`;
+    const aos = (p + q) / 2;
+    const ky = a * (aos - p) * (aos - q);
+    info.innerHTML = `Roots: <strong>(${p}, 0)</strong>, <strong>(${q}, 0)</strong> · Vertex: <strong>(${aos.toFixed(2)}, ${ky.toFixed(2)})</strong> · Opens: <strong>${a > 0 ? 'up' : 'down'}</strong>`;
+  }
+  // Build SVG
+  let path = '';
+  const xMin = -10, xMax = 10;
+  for (let x = xMin; x <= xMax; x += 0.1) {
+    let y;
+    if (currentForm === 'standard') y = a * x * x + b * x + c;
+    else if (currentForm === 'vertex') y = a * (x - h) * (x - h) + k;
+    else y = a * (x - p) * (x - q);
+    if (y > 12) y = 12;
+    if (y < -12) y = -12;
+    const px = x * 8;
+    const py = -y * 7;
+    path += (path === '' ? 'M' : 'L') + px + ',' + py + ' ';
+  }
+  svg.innerHTML = `
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#ccc" stroke-width="0.5"/>
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#ccc" stroke-width="0.5"/>
+    ${[-10,-5,5,10].map(t => `<text x="${t*8}" y="8" font-size="5" fill="#888" text-anchor="middle">${t}</text>`).join('')}
+    ${[-10,-5,5,10].map(t => `<text x="-3" y="${-t*7+1}" font-size="5" fill="#888" text-anchor="end">${t}</text>`).join('')}
+    <path d="${path}" fill="none" stroke="#7a4dff" stroke-width="1.5"/>
+  `;
+}
+['std-a','std-b','std-c','ver-a','ver-h','ver-k','int-a','int-p','int-q'].forEach(id => {
+  document.getElementById(id).addEventListener('input', drawParabola);
+});
+drawParabola();
+
+// ============ FLASHCARDS ============
+function renderDeckPicker() {
+  const picker = document.getElementById('deck-picker');
+  picker.innerHTML = Object.keys(FLASHCARDS).map(d =>
+    `<button class="${d === currentDeck ? 'active' : ''}" onclick="setDeck('${d}')">${d.charAt(0).toUpperCase() + d.slice(1)} (${FLASHCARDS[d].length})</button>`
+  ).join('');
+}
+function setDeck(d) {
+  currentDeck = d;
+  currentCard = 0;
+  isFlipped = false;
+  renderDeckPicker();
+  renderCard();
+}
+function renderCard() {
+  const deck = FLASHCARDS[currentDeck];
+  const card = deck[currentCard];
+  const div = document.getElementById('card-content');
+  div.className = isFlipped ? 'def' : 'term';
+  div.textContent = isFlipped ? card.def : card.term;
+  document.getElementById('card-progress').textContent = `Card ${currentCard + 1} of ${deck.length} · tap to flip`;
+}
+function flipCard() {
+  isFlipped = !isFlipped;
+  renderCard();
+}
+function nextCard() {
+  const deck = FLASHCARDS[currentDeck];
+  currentCard = (currentCard + 1) % deck.length;
+  isFlipped = false;
+  renderCard();
+}
+function prevCard() {
+  const deck = FLASHCARDS[currentDeck];
+  currentCard = (currentCard - 1 + deck.length) % deck.length;
+  isFlipped = false;
+  renderCard();
+}
+renderDeckPicker();
+renderCard();
+
+// ============ QUIZ ============
+function renderQuizPicker() {
+  const picker = document.getElementById('quiz-picker');
+  picker.innerHTML = Object.keys(QUIZZES).map(q =>
+    `<button class="${q === currentQuiz ? 'active' : ''}" onclick="setQuiz('${q}')">${QUIZZES[q].name}</button>`
+  ).join('');
+}
+function setQuiz(q) {
+  currentQuiz = q;
+  renderQuizPicker();
+  renderQuiz();
+}
+let score = 0, answered = 0;
+function renderQuiz() {
+  score = 0; answered = 0;
+  const quiz = QUIZZES[currentQuiz];
+  const content = document.getElementById('quiz-content');
+  content.innerHTML = quiz.questions.map((q, i) => `
+    <div class="quiz-question" data-i="${i}">
+      <div class="q-text">${i+1}. ${q.q}</div>
+      <div class="options">
+        ${q.a.map((opt, j) => `<button onclick="answer(${i}, ${j})">${opt}</button>`).join('')}
+      </div>
+      <div class="feedback" id="fb-${i}"></div>
+    </div>
+  `).join('');
+  document.getElementById('quiz-score').textContent = '';
+}
+function answer(qIdx, aIdx) {
+  const quiz = QUIZZES[currentQuiz];
+  const q = quiz.questions[qIdx];
+  const box = document.querySelector(`.quiz-question[data-i="${qIdx}"]`);
+  const buttons = box.querySelectorAll('.options button');
+  if (buttons[0].disabled) return; // already answered
+  buttons.forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.correct) b.classList.add('correct');
+    if (j === aIdx && j !== q.correct) b.classList.add('wrong');
+  });
+  const fb = document.getElementById('fb-' + qIdx);
+  const correct = aIdx === q.correct;
+  fb.className = 'feedback show ' + (correct ? 'correct' : 'wrong');
+  fb.textContent = (correct ? '✓ Yes! ' : '✗ Not quite. ') + q.why;
+  if (correct) score++;
+  answered++;
+  if (answered === quiz.questions.length) {
+    document.getElementById('quiz-score').innerHTML = `<strong>Score: ${score} / ${quiz.questions.length}</strong> · ${score >= 4 ? '🎉 Crushed it!' : score >= 2 ? 'Solid — review the misses.' : 'Time to revisit the topic. No worries.'}`;
+  }
+}
+renderQuizPicker();
+renderQuiz();
+
+// ============ CHEAT SHEET ============
+function renderCheats(items) {
+  document.getElementById('cheat-list').innerHTML = items.map(c => `
+    <div class="cheat-item">
+      <h4>${c.title}</h4>
+      <p>${c.body}</p>
+    </div>
+  `).join('');
+}
+function filterCheats() {
+  const q = document.getElementById('cheat-search').value.toLowerCase();
+  if (!q) return renderCheats(CHEAT_ITEMS);
+  renderCheats(CHEAT_ITEMS.filter(c =>
+    c.title.toLowerCase().includes(q) ||
+    c.body.toLowerCase().includes(q) ||
+    c.keys.toLowerCase().includes(q)
+  ));
+}
+renderCheats(CHEAT_ITEMS);
+
+// ============ PRACTICE GENERATORS ============
+function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+function randNonZero(min, max) { let n; do { n = randInt(min, max); } while (n === 0); return n; }
+function randPick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function superscript(n) {
+  const m = ['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];
+  return String(n).split('').map(d => m[parseInt(d)] !== undefined ? m[parseInt(d)] : d).join('');
+}
+function fmtTerm(c, exp) {
+  if (c === 0) return '0';
+  const abs = Math.abs(c);
+  const v = exp === 0 ? '' : exp === 1 ? 'x' : `x${superscript(exp)}`;
+  const num = (abs === 1 && v !== '') ? '' : `${abs}`;
+  return (c < 0 ? '−' : '') + num + v;
+}
+function fmtPoly(coefs) {
+  const n = coefs.length;
+  let result = '';
+  for (let i = 0; i < n; i++) {
+    const c = coefs[i];
+    if (c === 0) continue;
+    const exp = n - 1 - i;
+    const abs = Math.abs(c);
+    const v = exp === 0 ? '' : exp === 1 ? 'x' : `x${superscript(exp)}`;
+    const num = (abs === 1 && v !== '') ? '' : `${abs}`;
+    if (result === '') result += (c < 0 ? '−' : '') + num + v;
+    else result += (c < 0 ? ' − ' : ' + ') + num + v;
+  }
+  return result === '' ? '0' : result;
+}
+function fmtSign(c) {
+  if (c === 0) return '';
+  return c > 0 ? `+ ${c}` : `− ${Math.abs(c)}`;
+}
+function fmtSignTerm(c, v) {
+  // Returns "+ 3x" or "− x" etc with proper sign and variable
+  if (c === 0) return '';
+  const abs = Math.abs(c);
+  const num = (abs === 1 && v !== '') ? '' : `${abs}`;
+  return (c > 0 ? '+ ' : '− ') + num + v;
+}
+function fmtSignX(c) {
+  // For "+ 5x", "− x", "+ x", or '' when c=0
+  if (c === 0) return '';
+  const abs = Math.abs(c);
+  const num = abs === 1 ? '' : `${abs}`;
+  return (c > 0 ? '+ ' : '− ') + num + 'x';
+}
+function fmtBinomX(p) {
+  // (x + p) or (x − |p|)
+  return p >= 0 ? `(x + ${p})` : `(x − ${-p})`;
+}
+function fmtBinomScaled(m, p) {
+  const mPart = m === 1 ? 'x' : `${m}x`;
+  return p >= 0 ? `(${mPart} + ${p})` : `(${mPart} − ${-p})`;
+}
+
+const TOPIC_NAMES_PRAC = {
+  1: "Add/Subtract Polynomials",
+  2: "Multiplying (FOIL)",
+  3: "GCF",
+  4: "Factoring Basic",
+  5: "Factoring Advanced (AC)",
+  6: "Difference of Squares",
+  7: "Graphing y = ax²",
+  8: "Graphing Intercept Form",
+  9: "Graphing Vertex Form",
+  10: "Solving by Factoring",
+  11: "Solving by Square Roots",
+  12: "Completing the Square",
+  13: "Quadratic Formula"
+};
+
+const PRACTICE_GENERATORS = {
+  1: () => {
+    const op = Math.random() > 0.5 ? '+' : '−';
+    const p1 = [randInt(1, 5), randNonZero(-7, 7), randNonZero(-9, 9)];
+    const p2 = [randInt(1, 5), randNonZero(-7, 7), randNonZero(-9, 9)];
+    const opName = op === '+' ? 'Add' : 'Subtract';
+    const p2eff = op === '+' ? p2 : p2.map(c => -c);
+    const ans = [p1[0] + p2eff[0], p1[1] + p2eff[1], p1[2] + p2eff[2]];
+    const steps = [];
+    let stepN = 1;
+    if (op === '−') {
+      steps.push({
+        title: `Step ${stepN++}: Flip every sign in the second polynomial`,
+        narrative: `Subtraction (taking one polynomial away from another) means we flip every sign in the second polynomial. The + becomes −, and − becomes +. Then it becomes a regular addition problem.`,
+        math: `(${fmtPoly(p1)}) + (${fmtPoly(p2eff)})`
+      });
+    }
+    steps.push({
+      title: `Step ${stepN++}: Drop the parentheses`,
+      narrative: `Now that signs are settled, we drop the parentheses (the round brackets that group terms together) and write everything in a single line.`,
+      math: `${fmtPoly(p1)} ${fmtSignTerm(p2eff[0], 'x²')} ${fmtSignTerm(p2eff[1], 'x')} ${fmtSignTerm(p2eff[2], '')}`.trim()
+    });
+    steps.push({
+      title: `Step ${stepN++}: Group like terms`,
+      narrative: `Like terms (terms with the same variable AND same exponent) get grouped: x² with x², x with x, and constants (plain numbers without variables) with constants.`,
+      math: `(${fmtTerm(p1[0],2)} ${fmtSignTerm(p2eff[0],'x²')}) + (${fmtTerm(p1[1],1)} ${fmtSignTerm(p2eff[1],'x')}) + (${p1[2]} ${fmtSign(p2eff[2])})`
+    });
+    steps.push({
+      title: `Step ${stepN++}: Add the coefficients in each group`,
+      narrative: `The coefficient (the number in front of a variable) of each like-term group gets added. x² with x², x with x, constants with constants.`,
+      math: `${ans[0] !== 0 ? fmtTerm(ans[0],2) : '0'} ${ans[1] !== 0 ? fmtSignTerm(ans[1],'x') : ''} ${ans[2] !== 0 ? fmtSign(ans[2]) : ''}`.replace(/\s+/g, ' ').trim()
+    });
+    steps.push({
+      title: `Step ${stepN++}: Final answer in standard form`,
+      narrative: `Standard form means terms are ordered from biggest exponent to smallest. Always check that all like-terms got combined.`,
+      math: fmtPoly(ans)
+    });
+    return {
+      problem: `${opName}: (${fmtPoly(p1)}) ${op} (${fmtPoly(p2)})`,
+      answer: fmtPoly(ans),
+      overall: `Adding or subtracting polynomials (sums of x-terms) is about combining like terms. For subtraction, flip every sign in the second polynomial first — then it becomes addition. The big skill is sign discipline (paying close attention to + and −, especially with subtraction).`,
+      steps: steps
+    };
+  },
+
+  2: () => {
+    const p = randNonZero(-9, 9);
+    const q = randNonZero(-9, 9);
+    const bSum = p + q;
+    const cProd = p * q;
+    return {
+      problem: `Multiply: ${fmtBinomX(p)}${fmtBinomX(q)}`,
+      answer: fmtPoly([1, bSum, cProd]),
+      overall: `FOIL stands for First, Outer, Inner, Last — the four pairs you multiply when combining two binomials (polynomials with two terms each). Every term in the first binomial shakes hands with every term in the second. The middle two products usually combine into one (because they're like terms).`,
+      steps: [
+        {
+          title: "Step 1: First — multiply the FIRST terms in each binomial",
+          narrative: `The first term of each binomial gets multiplied: x times x = x².`,
+          math: `x · x = x²`
+        },
+        {
+          title: "Step 2: Outer — multiply the OUTER terms",
+          narrative: `The outermost terms: the first term of the first binomial (x) times the last term of the second binomial (${q}).`,
+          math: `x · (${q}) = ${fmtTerm(q, 1)}`
+        },
+        {
+          title: "Step 3: Inner — multiply the INNER terms",
+          narrative: `The innermost terms: the last term of the first binomial (${p}) times the first term of the second binomial (x).`,
+          math: `(${p}) · x = ${fmtTerm(p, 1)}`
+        },
+        {
+          title: "Step 4: Last — multiply the LAST terms",
+          narrative: `The last term of each binomial gets multiplied: ${p} times ${q} = ${cProd}.`,
+          math: `(${p}) · (${q}) = ${cProd}`
+        },
+        {
+          title: "Step 5: Combine the middle two terms (they're like terms)",
+          narrative: `The Outer and Inner products are both x-terms (like terms — same variable + same exponent). Add their coefficients: ${q} + ${p} = ${bSum}.`,
+          math: `${fmtTerm(q,1)} ${fmtSignTerm(p, 'x')} = ${fmtTerm(bSum, 1)}`
+        },
+        {
+          title: "Step 6: Write the final polynomial",
+          narrative: `Combine x² + middle term + constant. Done.`,
+          math: fmtPoly([1, bSum, cProd])
+        }
+      ]
+    };
+  },
+
+  3: () => {
+    function gcd(x, y) { x = Math.abs(x); y = Math.abs(y); while (y) { [x, y] = [y, x % y]; } return x; }
+    const gcfCoef = randInt(2, 6);
+    const gcfPow = randInt(1, 2);
+    let a, b;
+    do {
+      a = randInt(2, 5);
+      b = randNonZero(-5, 5);
+    } while (gcd(a, b) !== 1);
+    // Ensure variable GCF is exactly gcfPow (at least one inside term must have x^0)
+    const aPow = Math.random() < 0.5 ? 0 : randInt(0, 2);
+    const bPow = (aPow > 0) ? 0 : randInt(0, 2);
+    const t1Coef = gcfCoef * a;
+    const t1Pow = gcfPow + aPow;
+    const t2Coef = gcfCoef * b;
+    const t2Pow = gcfPow + bPow;
+    const gcfStr = `${gcfCoef === 1 ? '' : gcfCoef}${gcfPow === 0 ? '' : gcfPow === 1 ? 'x' : `x${superscript(gcfPow)}`}`;
+    const problem = `${fmtTerm(t1Coef, t1Pow)} ${t2Coef >= 0 ? '+' : '−'} ${fmtTerm(Math.abs(t2Coef), t2Pow)}`;
+    const inner1 = fmtTerm(a, aPow);
+    const inner2sign = b >= 0 ? '+' : '−';
+    const inner2 = fmtTerm(Math.abs(b), bPow);
+    const ans = `${gcfStr}(${inner1} ${inner2sign} ${inner2})`;
+    return {
+      problem: `Factor out the GCF: ${problem}`,
+      answer: ans,
+      overall: `The Greatest Common Factor (GCF) is the biggest term that divides into every term of the polynomial. Pull it out front; what's left goes in parentheses. Always check by multiplying back to confirm.`,
+      steps: [
+        {
+          title: "Step 1: Find the GCF of the numbers (coefficients)",
+          narrative: `Looking at ${t1Coef} and ${Math.abs(t2Coef)}: the biggest number that divides into both is ${gcfCoef}. (You can find this by listing factors of each, or by prime factorization — breaking each number into primes.)`,
+          math: `GCF of coefficients = ${gcfCoef}`
+        },
+        {
+          title: "Step 2: Find the GCF of the variables",
+          narrative: `For variables, take the smallest power present in every term. The first term has x${superscript(t1Pow)}, the second has x${superscript(t2Pow)}. The smallest exponent is ${gcfPow}, so the variable GCF is ${gcfPow === 1 ? 'x' : 'x' + superscript(gcfPow)}.`,
+          math: `GCF of variables = ${gcfPow === 1 ? 'x' : 'x' + superscript(gcfPow)}`
+        },
+        {
+          title: "Step 3: Combine to get the full GCF",
+          narrative: `Multiply the number GCF and the variable GCF together.`,
+          math: `GCF = ${gcfStr}`
+        },
+        {
+          title: "Step 4: Divide each term by the GCF",
+          narrative: `${fmtTerm(t1Coef, t1Pow)} ÷ ${gcfStr} = ${inner1}. And ${fmtTerm(t2Coef, t2Pow)} ÷ ${gcfStr} = ${fmtTerm(b, bPow)}.`,
+          math: `Inside parens: ${inner1} ${inner2sign} ${inner2}`
+        },
+        {
+          title: "Step 5: Write GCF outside, the rest in parentheses",
+          narrative: `Final form: GCF · (what's left). Check by multiplying back — you should get the original.`,
+          math: ans
+        }
+      ]
+    };
+  },
+
+  4: () => {
+    let p, q;
+    do {
+      p = randNonZero(-8, 8);
+      q = randNonZero(-8, 8);
+    } while (Math.abs(p * q) > 36 || p + q === 0);
+    const b = p + q;
+    const c = p * q;
+    return {
+      problem: `Factor: ${fmtPoly([1, b, c])}`,
+      answer: `${fmtBinomX(p)}${fmtBinomX(q)}`,
+      overall: `Factoring x² + bx + c is finding two numbers that multiply to c and add to b. Those two numbers go in the parentheses: (x + p)(x + q). Sign rules: if c is positive, both numbers have the same sign as b. If c is negative, one number is positive and one is negative — the bigger one matches the sign of b.`,
+      steps: [
+        {
+          title: "Step 1: Identify b and c",
+          narrative: `In x² + bx + c (where the leading coefficient — the number in front of x² — is 1), b is the coefficient of x and c is the constant (the plain number with no variable). Here b = ${b} and c = ${c}.`,
+          math: `b = ${b}, c = ${c}`
+        },
+        {
+          title: "Step 2: Find two numbers that multiply to c AND add to b",
+          narrative: `We need p and q where p × q = ${c} and p + q = ${b}. List the factor pairs of ${c} and find the one whose numbers sum to ${b}.`,
+          math: `p × q = ${c} and p + q = ${b}`
+        },
+        {
+          title: "Step 3: Use the sign rules to lock in the right signs",
+          narrative: c > 0 && b > 0 ? `c > 0 and b > 0: both numbers are positive.` :
+            c > 0 && b < 0 ? `c > 0 and b < 0: both numbers are negative.` :
+            c < 0 ? `c < 0: one number is positive and one is negative; the one with the bigger absolute value matches the sign of b (${b > 0 ? 'positive' : 'negative'}).` :
+            `Special case.`,
+          math: `Numbers: ${p} and ${q}`
+        },
+        {
+          title: "Step 4: Write as (x + p)(x + q)",
+          narrative: `Plug the numbers into the factored form (each goes in its own parens with x).`,
+          math: `${fmtBinomX(p)}${fmtBinomX(q)}`
+        },
+        {
+          title: "Step 5: Check by FOIL",
+          narrative: `Multiply back out using FOIL — x · x = x², middle terms add to ${b}x, last terms multiply to ${c}. Matches the original.`,
+          math: `${fmtBinomX(p)}${fmtBinomX(q)} = ${fmtPoly([1, b, c])} ✓`
+        }
+      ]
+    };
+  },
+
+  5: () => {
+    const m = randInt(2, 3);
+    const n = 1;
+    let p, q;
+    do {
+      p = randNonZero(-5, 5);
+      q = randNonZero(-5, 5);
+    } while (Math.abs(p * q) > 12);
+    const a = m * n;
+    const b = m * q + n * p;
+    const c = p * q;
+    const ac = a * c;
+    const num1 = m * q;
+    const num2 = n * p;
+    const grp = fmtBinomX(q);
+    return {
+      problem: `Factor: ${fmtPoly([a, b, c])}`,
+      answer: `${fmtBinomScaled(m, p)}${grp}`,
+      overall: `Factoring ax² + bx + c (when a ≠ 1) uses the AC method (sometimes called factoring by grouping): multiply a × c, find two numbers that multiply to that and add to b, split the middle term, then factor by grouping.`,
+      steps: [
+        {
+          title: "Step 1: Compute a · c",
+          narrative: `In ${fmtPoly([a, b, c])}: a = ${a}, b = ${b}, c = ${c}. Multiply a · c = ${a} × ${c} = ${ac}.`,
+          math: `a · c = ${ac}`
+        },
+        {
+          title: "Step 2: Find two numbers that multiply to ac AND add to b",
+          narrative: `We need numbers where ×=${ac} and +=${b}. After trying pairs, ${num1} and ${num2} work (${num1} × ${num2} = ${num1 * num2}, ${num1} + ${num2} = ${num1 + num2}).`,
+          math: `Numbers: ${num1} and ${num2}`
+        },
+        {
+          title: "Step 3: Split the middle term",
+          narrative: `Rewrite the middle term (${b}x) as the sum of two terms using our found numbers.`,
+          math: `${a}x² ${fmtSignX(num1)} ${fmtSignX(num2)} ${fmtSign(c)}`
+        },
+        {
+          title: "Step 4: Group into pairs and factor each pair (factor by grouping)",
+          narrative: `Group the first two terms together and the last two together. Pull out the GCF (greatest common factor) from each pair. The first pair gives ${m}x · ${grp}; the second pair gives ${p > 0 ? p : `(${p})`} · ${grp}.`,
+          math: `${m}x · ${grp} ${p >= 0 ? '+' : '−'} ${Math.abs(p)} · ${grp}`
+        },
+        {
+          title: "Step 5: Pull out the shared parentheses",
+          narrative: `Both pieces now have ${grp} — that's the shared factor. Pull it out, and what's left becomes the other binomial.`,
+          math: `${fmtBinomScaled(m, p)}${grp}`
+        },
+        {
+          title: "Step 6: Check by FOIL",
+          narrative: `Multiply back to confirm you get the original quadratic.`,
+          math: `${fmtBinomScaled(m, p)}${grp} = ${fmtPoly([a, b, c])} ✓`
+        }
+      ]
+    };
+  },
+
+  6: () => {
+    const m = randInt(1, 4);
+    const n = randInt(2, 10);
+    const a = m * m;
+    const b = n * n;
+    const problem = `${a === 1 ? '' : a}x² − ${b}`;
+    const ans = `${fmtBinomScaled(m, n)}${fmtBinomScaled(m, -n)}`;
+    const aStr = m === 1 ? 'x' : `${m}x`;
+    return {
+      problem: `Factor: ${problem}`,
+      answer: ans,
+      overall: `Difference of squares (a² − b²) is the easiest factoring pattern: it always factors into (a + b)(a − b). Identify a (square root of the first term) and b (square root of the second), then write the pattern. The minus between the two terms is required — a² + b² (sum of squares) does NOT factor in Algebra 1.`,
+      steps: [
+        {
+          title: "Step 1: Confirm this is a difference of squares",
+          narrative: `Two terms? ✓ Both perfect squares (numbers or terms that are something squared)? ${a === 1 ? `x² is x squared` : `${a}x² is (${m}x) squared`} ✓; ${b} is ${n} squared ✓. Separated by a minus? ✓`,
+          math: `${problem} = (${aStr})² − ${n}²`
+        },
+        {
+          title: "Step 2: Identify a and b",
+          narrative: `a is the square root of the first term: ${aStr}. b is the square root of the second term: ${n}.`,
+          math: `a = ${aStr}, b = ${n}`
+        },
+        {
+          title: "Step 3: Apply the pattern (a + b)(a − b)",
+          narrative: `Plug a and b into the pattern. One set of parens gets a plus, the other gets a minus.`,
+          math: ans
+        },
+        {
+          title: "Step 4: Check by FOIL (middle terms cancel)",
+          narrative: `If you FOIL ${ans}, the Outer (+${n}·${aStr}) and Inner (−${n}·${aStr}) cancel out, leaving just (${aStr})² − ${n}² = ${problem}. That's why this pattern always works.`,
+          math: `${ans} = ${problem} ✓`
+        }
+      ]
+    };
+  },
+
+  7: () => {
+    const aOptions = [1, 2, 3, -1, -2, -3, 0.5, -0.5];
+    const a = randPick(aOptions);
+    const x = randInt(1, 3);
+    const y = a * x * x;
+    const aStr = a === 1 ? '' : a === -1 ? '−' : `${a}`;
+    return {
+      problem: `For y = ${aStr}x², find: (a) the vertex, (b) direction (opens up or down), (c) wider or narrower than y = x², (d) y when x = ${x}.`,
+      answer: `(a) (0, 0)  (b) ${a > 0 ? 'up' : 'down'}  (c) ${Math.abs(a) > 1 ? 'narrower' : Math.abs(a) < 1 ? 'wider' : 'same width'}  (d) y(${x}) = ${y}`,
+      overall: `For y = ax² (the simplest parabola — U-shaped curve from a quadratic function), the vertex (the highest or lowest point) is always at the origin (0, 0). The value of a controls direction (positive opens up, negative opens down) and width (bigger |a| = narrower).`,
+      steps: [
+        {
+          title: "Step 1: Find the vertex",
+          narrative: `For y = ax² with no other terms, the vertex (turning point of the parabola) is always at the origin: (0, 0). That's because plugging x = 0 gives y = a · 0² = 0.`,
+          math: `Vertex = (0, 0)`
+        },
+        {
+          title: "Step 2: Direction (up or down)",
+          narrative: `a = ${a}. ${a > 0 ? 'a is positive → opens UP (smile shape). The vertex is the minimum (lowest y).' : 'a is negative → opens DOWN (frown shape). The vertex is the maximum (highest y).'}`,
+          math: `Opens ${a > 0 ? 'up' : 'down'}`
+        },
+        {
+          title: "Step 3: Width (compared to y = x²)",
+          narrative: `|a| = ${Math.abs(a)}. ${Math.abs(a) > 1 ? `Bigger than 1 → NARROWER than y = x² (stretches up faster).` : Math.abs(a) < 1 ? `Smaller than 1 → WIDER than y = x² (spreads out more).` : `Equal to 1 → same width as y = x².`}`,
+          math: `${Math.abs(a) > 1 ? 'Narrower' : Math.abs(a) < 1 ? 'Wider' : 'Same width'}`
+        },
+        {
+          title: `Step 4: Compute y when x = ${x}`,
+          narrative: `Plug ${x} in for x: y = ${a} × (${x})² = ${a} × ${x * x} = ${y}.`,
+          math: `y(${x}) = ${y}`
+        }
+      ]
+    };
+  },
+
+  8: () => {
+    let p, q;
+    do {
+      p = randNonZero(-7, 7);
+      q = randNonZero(-7, 7);
+    } while (p === q || (p + q) % 2 !== 0);
+    const problem = `${p >= 0 ? `(x − ${p})` : `(x + ${-p})`}${q >= 0 ? `(x − ${q})` : `(x + ${-q})`}`;
+    const aos = (p + q) / 2;
+    const vy = (aos - p) * (aos - q);
+    return {
+      problem: `For y = ${problem}, find: (a) the x-intercepts, (b) axis of symmetry, (c) the vertex.`,
+      answer: `(a) (${p}, 0) and (${q}, 0)  (b) x = ${aos}  (c) (${aos}, ${vy})`,
+      overall: `Intercept form (also called factored form) makes the x-intercepts (where the parabola crosses the x-axis) obvious. The big trap: the sign inside the parens flips when you read off the intercept. (x − 5) means root at +5, not −5. The axis of symmetry (the vertical line that splits the parabola into mirror halves) is always exactly halfway between the two roots.`,
+      steps: [
+        {
+          title: "Step 1: Identify p and q — watch the sign flip!",
+          narrative: `The form is y = (x − p)(x − q). Reading off: ${p >= 0 ? `(x − ${p}) means p = +${p}` : `(x + ${-p}) means p = ${p} (the sign INSIDE the parens is +, so p is negative)`}. Same for q: ${q >= 0 ? `(x − ${q}) means q = +${q}` : `(x + ${-q}) means q = ${q}`}.`,
+          math: `p = ${p}, q = ${q}`
+        },
+        {
+          title: "Step 2: x-intercepts are at (p, 0) and (q, 0)",
+          narrative: `The x-intercepts (also called roots or zeros — three names for the same thing) are where y = 0. Each factor being zero gives a solution.`,
+          math: `x-intercepts: (${p}, 0) and (${q}, 0)`
+        },
+        {
+          title: "Step 3: Find the axis of symmetry — halfway between the roots",
+          narrative: `The axis of symmetry (AOS) is the vertical line through the vertex that splits the parabola into mirror halves. It's exactly halfway between the two roots: (p + q) / 2 = (${p} + ${q}) / 2 = ${aos}.`,
+          math: `AOS: x = ${aos}`
+        },
+        {
+          title: "Step 4: Plug AOS x into the equation to find vertex y",
+          narrative: `The vertex sits on the axis of symmetry. To find its y-coordinate, plug x = ${aos} into the original equation: y = (${aos} − ${p})(${aos} − ${q}) = (${aos - p})(${aos - q}) = ${vy}.`,
+          math: `Vertex: (${aos}, ${vy})`
+        }
+      ]
+    };
+  },
+
+  9: () => {
+    const aOptions = [1, 2, -1, -2];
+    const a = randPick(aOptions);
+    const h = randNonZero(-5, 5);
+    const k = randNonZero(-5, 5);
+    const aStr = a === 1 ? '' : a === -1 ? '−' : `${a}`;
+    const hStr = h >= 0 ? `(x − ${h})²` : `(x + ${-h})²`;
+    const kStr = k >= 0 ? `+ ${k}` : `− ${-k}`;
+    const x = randInt(-2, 4);
+    const y = a * (x - h) * (x - h) + k;
+    return {
+      problem: `For y = ${aStr}${hStr} ${kStr}, find: (a) vertex, (b) axis of symmetry, (c) direction, (d) y when x = ${x}.`,
+      answer: `(a) (${h}, ${k})  (b) x = ${h}  (c) opens ${a > 0 ? 'up' : 'down'}  (d) y(${x}) = ${y}`,
+      overall: `Vertex form is the most useful form for graphing because it gives you the vertex (highest or lowest point) directly: y = a(x − h)² + k has vertex (h, k). The biggest trap is the sign of h — what's inside the parens has its sign flipped when you read off h. (x − 3)² → h = +3. (x + 3)² → h = −3.`,
+      steps: [
+        {
+          title: "Step 1: Identify h — flip the sign inside the parens!",
+          narrative: `The form is y = a(x − h)² + k. Reading off: ${h >= 0 ? `(x − ${h})² → h = +${h} (the sign inside is −, so h is positive)` : `(x + ${-h})² → h = ${h} (the sign inside is +, so h is negative — sign flipped!)`}.`,
+          math: `h = ${h}`
+        },
+        {
+          title: "Step 2: Identify k — the sign stays the same",
+          narrative: `k is what comes after the parentheses (the constant added or subtracted at the end). Its sign is what you see. Here k = ${k}.`,
+          math: `k = ${k}`
+        },
+        {
+          title: "Step 3: The vertex is (h, k)",
+          narrative: `Vertex form is named exactly for this: it hands you the vertex directly.`,
+          math: `Vertex: (${h}, ${k})`
+        },
+        {
+          title: "Step 4: Axis of symmetry is x = h",
+          narrative: `The axis of symmetry (vertical line through the vertex) goes through x = h.`,
+          math: `AOS: x = ${h}`
+        },
+        {
+          title: "Step 5: Direction (up or down) from a",
+          narrative: `a = ${a}. ${a > 0 ? 'Positive → opens UP. Vertex is a minimum (lowest point).' : 'Negative → opens DOWN. Vertex is a maximum (highest point).'}`,
+          math: `Opens ${a > 0 ? 'up' : 'down'}`
+        },
+        {
+          title: `Step 6: Compute y when x = ${x}`,
+          narrative: `Plug ${x} in for x: y = ${a}(${x} − ${h})² + ${k} = ${a}(${x - h})² + ${k} = ${a} × ${(x-h)*(x-h)} + ${k} = ${y}.`,
+          math: `y(${x}) = ${y}`
+        }
+      ]
+    };
+  },
+
+  10: () => {
+    let p, q;
+    do {
+      p = randNonZero(-7, 7);
+      q = randNonZero(-7, 7);
+    } while (p === q || Math.abs(p * q) > 30 || p + q === 0);
+    const b = -(p + q);
+    const c = p * q;
+    return {
+      problem: `Solve: ${fmtPoly([1, b, c])} = 0`,
+      answer: `x = ${p} or x = ${q}`,
+      overall: `Solving by factoring uses the Zero Product Property (if A · B = 0, then A = 0 OR B = 0). The equation MUST equal zero before you can factor and split. Then: factor the quadratic, set each factor equal to zero, and solve each. Two solutions, almost always.`,
+      steps: [
+        {
+          title: "Step 1: Check that the equation equals zero",
+          narrative: `The Zero Product Property only works when one side is 0. This equation is already set up that way. ✓ (If it weren't, we'd move all terms to one side first.)`,
+          math: `${fmtPoly([1, b, c])} = 0`
+        },
+        {
+          title: "Step 2: Factor the quadratic (Topic 4 method)",
+          narrative: `Need two numbers that multiply to ${c} and add to ${b}. The pair ${-p} and ${-q} works.`,
+          math: `${fmtBinomX(-p)}${fmtBinomX(-q)} = 0`
+        },
+        {
+          title: "Step 3: Apply the Zero Product Property",
+          narrative: `Set each factor (each parenthesized piece) equal to zero separately. If their product is zero, at least one of them must be zero.`,
+          math: `x ${fmtSign(-p)} = 0   OR   x ${fmtSign(-q)} = 0`
+        },
+        {
+          title: "Step 4: Solve each mini-equation for x",
+          narrative: `Just isolate x in each branch by moving the constant to the other side.`,
+          math: `x = ${p}   OR   x = ${q}`
+        },
+        {
+          title: "Step 5: Write both solutions",
+          narrative: `Quadratics typically have two solutions. Always write both, even when one is obvious. (Optional: plug each back into the original to verify.)`,
+          math: `x = ${p} or x = ${q}`
+        }
+      ]
+    };
+  },
+
+  11: () => {
+    const h = randInt(-5, 5);
+    const r = randInt(1, 8);
+    const k = r * r;
+    const ans1 = -h + r;
+    const ans2 = -h - r;
+    const hStr = h === 0 ? 'x' : h > 0 ? `(x + ${h})` : `(x − ${-h})`;
+    return {
+      problem: `Solve: ${hStr}² = ${k}`,
+      answer: `x = ${ans1} or x = ${ans2}`,
+      overall: `The square root method works when you have (something)² = a number. Take the square root of both sides — but always remember to write ± because two values (one positive and one negative) give the same positive square. Then solve for x.`,
+      steps: [
+        {
+          title: "Step 1: Confirm the squared part is isolated",
+          narrative: `The squared expression ${hStr}² is already alone on the left side. ✓ (If it weren't, we'd add/subtract/divide first to isolate it.)`,
+          math: `${hStr}² = ${k}`
+        },
+        {
+          title: "Step 2: Take the square root of both sides",
+          narrative: `Apply √ (square root) to both sides. On the left, √ undoes the square, leaving ${hStr}. On the right, √${k} = ${r}.`,
+          math: `${hStr} = ±${r}`
+        },
+        {
+          title: "Step 3: Always write the ± sign",
+          narrative: `Critical: every square root in an equation has TWO answers — positive and negative — because both ${r}² and (−${r})² equal ${k}. So we split into two equations.`,
+          math: `${hStr} = +${r}   OR   ${hStr} = −${r}`
+        },
+        {
+          title: "Step 4: Solve each branch for x",
+          narrative: `${h === 0 ? 'x is already isolated.' : (h > 0 ? `Subtract ${h} from both sides.` : `Add ${-h} to both sides.`)} Get one answer from the + branch, another from the −.`,
+          math: `x = ${ans1}   OR   x = ${ans2}`
+        }
+      ]
+    };
+  },
+
+  12: () => {
+    const half_b = randNonZero(-4, 4);
+    const r = randInt(1, 5);
+    const b = 2 * half_b;
+    const c = half_b * half_b - r * r;
+    const ans1 = -half_b + r;
+    const ans2 = -half_b - r;
+    const halfB2 = half_b * half_b;
+    return {
+      problem: `Solve by completing the square: ${fmtPoly([1, b, c])} = 0`,
+      answer: `x = ${ans1} or x = ${ans2}`,
+      overall: `Completing the square forces the left side to become a perfect square trinomial (a trinomial that factors into something squared). The magic number to add is (b/2)² — half of b, squared. Add it to BOTH sides (algebra rule). Then use the square root method to finish.`,
+      steps: [
+        {
+          title: "Step 1: Move c to the right side",
+          narrative: `${c >= 0 ? `Subtract ${c} from both sides.` : `Add ${-c} to both sides.`} This isolates the x² and x terms on the left.`,
+          math: `${fmtPoly([1, b, 0])} = ${-c}`
+        },
+        {
+          title: "Step 2: Compute (b/2)² — the magic number",
+          narrative: `Take half of b: ${b}/2 = ${half_b}. Square it: ${half_b}² = ${halfB2}. This is what we add to both sides to "complete" the perfect square.`,
+          math: `(b/2)² = ${halfB2}`
+        },
+        {
+          title: "Step 3: Add (b/2)² to BOTH sides",
+          narrative: `Algebra rule: whatever you do to one side, do to the other. Adding ${halfB2} to both sides keeps the equation balanced.`,
+          math: `${fmtPoly([1, b, 0])} + ${halfB2} = ${-c + halfB2}`
+        },
+        {
+          title: "Step 4: Factor the left side — it's now a perfect square",
+          narrative: `The left side is a perfect square trinomial. It factors as (x + b/2)² = (x ${fmtSign(half_b)})². The right side stays as ${-c + halfB2}.`,
+          math: `(x ${fmtSign(half_b)})² = ${-c + halfB2}`
+        },
+        {
+          title: "Step 5: Take square root of both sides — don't forget ±",
+          narrative: `Apply √ to both sides. The right side becomes ±${r} (always ±!).`,
+          math: `x ${fmtSign(half_b)} = ±${r}`
+        },
+        {
+          title: "Step 6: Solve for x in each branch",
+          narrative: `${half_b >= 0 ? `Subtract ${half_b}` : `Add ${-half_b}`} from both sides, then split.`,
+          math: `x = ${ans1} or x = ${ans2}`
+        }
+      ]
+    };
+  },
+
+  13: () => {
+    let r1, r2;
+    do {
+      r1 = randNonZero(-6, 6);
+      r2 = randNonZero(-6, 6);
+    } while (r1 === r2 || r1 + r2 === 0);
+    const a = 1;
+    const b = -(r1 + r2);
+    const c = r1 * r2;
+    const disc = b * b - 4 * a * c;
+    const sqrtDisc = Math.sqrt(disc);
+    const ans1 = (-b + sqrtDisc) / (2 * a);
+    const ans2 = (-b - sqrtDisc) / (2 * a);
+    return {
+      problem: `Solve using the quadratic formula: ${fmtPoly([1, b, c])} = 0`,
+      answer: `x = ${ans1} or x = ${ans2}`,
+      overall: `The quadratic formula x = (−b ± √(b² − 4ac)) / 2a works for ANY quadratic, even ones that don't factor. Identify a, b, c (with their signs!), compute the discriminant (the part under the √: b² − 4ac), take its square root, plug into the formula, then split into two answers.`,
+      steps: [
+        {
+          title: "Step 1: Identify a, b, c (keep the signs!)",
+          narrative: `In ${fmtPoly([1, b, c])} = 0: a is the coefficient of x² (which is 1), b is the coefficient of x (which is ${b}), and c is the constant (the plain number: ${c}).`,
+          math: `a = ${a}, b = ${b}, c = ${c}`
+        },
+        {
+          title: "Step 2: Compute the discriminant b² − 4ac",
+          narrative: `The discriminant (the part under the square root in the formula) tells us about the solutions. Here: b² − 4ac = (${b})² − 4(${a})(${c}) = ${b * b} − ${4 * a * c} = ${disc}.`,
+          math: `Discriminant = ${disc}`
+        },
+        {
+          title: "Step 3: Take the square root of the discriminant",
+          narrative: `√${disc} = ${sqrtDisc}. ${disc > 0 ? '(Positive discriminant means 2 real solutions.)' : disc === 0 ? '(Zero means 1 repeated solution.)' : '(Negative would mean no real solutions.)'}`,
+          math: `√${disc} = ${sqrtDisc}`
+        },
+        {
+          title: "Step 4: Plug into the formula",
+          narrative: `x = (−b ± √discriminant) / 2a = (−(${b}) ± ${sqrtDisc}) / (2 × ${a}) = (${-b} ± ${sqrtDisc}) / ${2 * a}.`,
+          math: `x = (${-b} ± ${sqrtDisc}) / ${2 * a}`
+        },
+        {
+          title: "Step 5: Split into two answers",
+          narrative: `Plus branch: x = (${-b} + ${sqrtDisc}) / ${2 * a} = ${ans1}. Minus branch: x = (${-b} − ${sqrtDisc}) / ${2 * a} = ${ans2}.`,
+          math: `x = ${ans1}   OR   x = ${ans2}`
+        }
+      ]
+    };
+  }
+};
+
+let currentPracticeTopic = 1;
+let currentProblems = [];
+let solutionsExpanded = {};
+
+function setPracticeTopic(num) {
+  currentPracticeTopic = num;
+  document.querySelectorAll('.practice-topic-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.topic) === num);
+  });
+  generateNewProblems();
+}
+
+function generateNewProblems() {
+  const gen = PRACTICE_GENERATORS[currentPracticeTopic];
+  currentProblems = [gen(), gen(), gen()];
+  solutionsExpanded = {0: false, 1: false, 2: false};
+  renderProblems();
+}
+
+function toggleSolution(idx) {
+  solutionsExpanded[idx] = !solutionsExpanded[idx];
+  renderProblems();
+}
+
+function showAllSolutions() {
+  const allShown = [0, 1, 2].every(i => solutionsExpanded[i]);
+  [0, 1, 2].forEach(i => { solutionsExpanded[i] = !allShown; });
+  renderProblems();
+}
+
+function renderProblems() {
+  const wrap = document.getElementById('practice-problems');
+  if (!wrap) return;
+  const topicName = TOPIC_NAMES_PRAC[currentPracticeTopic];
+  wrap.innerHTML = `
+    <div class="practice-header">
+      <strong>Topic ${currentPracticeTopic}: ${topicName}</strong> · 3 fresh problems · solutions include the full show-your-work with narrative
+    </div>
+    ${currentProblems.map((p, i) => `
+      <div class="practice-card">
+        <div class="practice-q">
+          <span class="practice-num">${i + 1}</span>
+          <span>${p.problem}</span>
+        </div>
+        <button class="solution-toggle" onclick="toggleSolution(${i})">
+          ${solutionsExpanded[i] ? '▼ Hide step-by-step solution' : '▶ Show step-by-step solution'}
+        </button>
+        ${solutionsExpanded[i] ? `
+          <div class="solution-page">
+            <div class="solution-overall"><strong>📖 The Big Picture:</strong> ${p.overall}</div>
+            ${p.steps.map(s => `
+              <div class="solution-step">
+                <div class="solution-step-title">${s.title}</div>
+                <div class="solution-step-narrative">${s.narrative}</div>
+                <div class="solution-step-math">${s.math}</div>
+              </div>
+            `).join('')}
+            <div class="solution-answer">✅ Final answer: ${p.answer}</div>
+          </div>
+        ` : ''}
+      </div>
+    `).join('')}
+  `;
+}
+
+function initPractice() {
+  const picker = document.getElementById('practice-topic-picker');
+  if (!picker) return;
+  picker.innerHTML = Object.entries(TOPIC_NAMES_PRAC).map(([num, name]) =>
+    `<button class="practice-topic-btn ${parseInt(num) === currentPracticeTopic ? 'active' : ''}" data-topic="${num}" onclick="setPracticeTopic(${num})">
+      <span class="practice-topic-num">${num}</span><span>${name}</span>
+    </button>`
+  ).join('');
+  generateNewProblems();
+}
+initPractice();
+</script>
+
+</body>
+</html>

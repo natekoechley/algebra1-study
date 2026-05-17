@@ -1,0 +1,23 @@
+Formula or Concept,What It Means or Does
+Adding polynomials,Combine like terms (same variable + same exponent)
+Subtracting polynomials,Flip every sign in the second polynomial then add
+FOIL pattern,(a + b)(c + d) = ac + ad + bc + bd
+Square of a sum,(a + b)² = a² + 2ab + b²
+Square of a difference,(a − b)² = a² − 2ab + b²
+Difference of squares,a² − b² = (a + b)(a − b)
+Sum of squares,a² + b² DOES NOT FACTOR in Algebra 1
+Factoring x² + bx + c,Find two numbers that multiply to c AND add to b. Result: (x + p)(x + q)
+Factoring ax² + bx + c (AC method),Multiply a·c. Find two #s ×ac +b. Split bx. Group. Factor each pair. Pull out matching parens
+GCF for numbers,Multiply the shared prime factors
+GCF for variables,Smallest power present in every term wins
+Zero Product Property,If ab = 0 then a = 0 or b = 0
+Vertex form vertex,y = a(x − h)² + k → vertex is (h k). Watch the sign of h — it flips!
+Standard form AOS,Axis of symmetry x = −b / (2a). Plug in to get vertex y
+Standard form y-intercept,y-intercept is (0 c)
+Intercept form roots,y = a(x − p)(x − q) → roots at +p and +q (sign flips). AOS = (p + q) / 2
+Direction of parabola,a > 0 opens up (smile minimum). a < 0 opens down (frown maximum)
+Width of parabola,|a| > 1 narrower than y = x². |a| < 1 wider. |a| = 1 standard
+Square root method,If (stuff)² = N then stuff = ±√N. ALWAYS write ±
+Completing the square,Take (b/2)². Add to both sides of x² + bx = c. Factor left as (x + b/2)²
+Quadratic Formula,x = (−b ± √(b² − 4ac)) / 2a — always works
+Discriminant meaning,Positive = 2 real solutions. Zero = 1. Negative = no real solutions

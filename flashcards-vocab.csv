@@ -1,0 +1,41 @@
+Term,Definition
+Polynomial,A sum of terms with variables and exponents (like 3x² + 5x − 7)
+Monomial,A single term — a number times variables (like 3x² or −5xy)
+Binomial,A polynomial with exactly 2 terms (like x + 3)
+Trinomial,A polynomial with exactly 3 terms (like x² + 7x + 12)
+Coefficient,The number in front of a variable. In 5x the coefficient is 5
+Constant,A plain number with no variable (like −7)
+Like terms,Terms with the SAME variable AND exponent. 3x² and −5x² are like terms
+Standard form,Terms ordered from biggest exponent to smallest
+Degree,The biggest exponent in a polynomial
+GCF,Greatest Common Factor — the biggest term that divides all the terms
+Factor (verb),Break a polynomial into a product of smaller pieces
+Prime number,A number whose only factors are 1 and itself (2 3 5 7 11…)
+Prime factorization,Breaking a number into all primes (12 = 2·2·3)
+Parabola,The U-shaped graph of any quadratic function
+Quadratic,A polynomial with x² as the highest power (like x² + 5x − 6)
+Vertex,The highest or lowest point of a parabola (tip of the U)
+Axis of symmetry (AOS),The vertical line through the vertex; parabola is mirrored on each side
+Opens up,Parabola is shaped like a smile (when a > 0)
+Opens down,Parabola is shaped like a frown (when a < 0)
+Minimum,The vertex y-value when parabola opens UP (lowest y)
+Maximum,The vertex y-value when parabola opens DOWN (highest y)
+x-intercept,Where the parabola crosses the x-axis (where y = 0)
+y-intercept,Where the parabola crosses the y-axis (where x = 0)
+Root,Another word for x-intercept or zero
+Zero (of a function),Another word for x-intercept or root
+Domain,All the x-values that work. For quadratics: ALL real numbers
+Range,All the y-values that occur. y ≥ k if opens up; y ≤ k if down
+Difference of squares,a² − b² which factors into (a + b)(a − b)
+Perfect square trinomial,A trinomial that factors into something squared (like x² + 6x + 9 = (x+3)²)
+Zero Product Property,If ab = 0 then a = 0 or b = 0. Used to solve by factoring
+Discriminant,b² − 4ac — tells you how many real solutions a quadratic has
+Vertex form,y = a(x − h)² + k — directly shows the vertex (h k)
+Standard form (quadratic),y = ax² + bx + c — directly shows the y-intercept (c)
+Intercept form,y = a(x − p)(x − q) — also called factored form; shows x-intercepts
+Square root,The opposite of squaring. √25 = 5 because 5² = 25
+Plus or minus (±),Means TWO answers exist — one positive one negative
+Completing the square,Adding (b/2)² to make a perfect square trinomial
+Quadratic formula,x = (−b ± √(b² − 4ac)) / 2a — always works for solving quadratics
+FOIL,First Outer Inner Last — the order for multiplying two binomials
+AC method,For factoring ax² + bx + c when leading coefficient isn't 1
