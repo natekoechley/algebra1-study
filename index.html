@@ -1668,7 +1668,7 @@ function initQuiz() {
     });
   }
 }
-initQuiz();
+// initQuiz() called at the bottom of the script after TOPIC_NAMES_PRAC is initialized
 
 // ============ CHEAT SHEET ============
 function renderCheats(items) {
@@ -2515,6 +2515,7 @@ function initPractice() {
   generateNewProblems();
 }
 initPractice();
+initQuiz();
 </script>
 
 </body>
