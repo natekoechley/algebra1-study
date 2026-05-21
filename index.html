@@ -991,7 +991,33 @@
 <!-- ============ FLASHCARDS ============ -->
 <div id="flashcards" class="view">
   <h2>🎴 Flashcards</h2>
-  <div class="deck-picker" id="deck-picker"></div>
+  <p style="color: var(--soft); font-size: 0.9rem;">Choose a deck and which lessons to draw from. Tap card to flip. Hit 💡 for a memory aid.</p>
+
+  <div class="quiz-config" id="flash-config">
+    <div class="config-row">
+      <label>Deck:</label>
+      <div class="diff-buttons" id="deck-picker"></div>
+    </div>
+    <div class="quiz-shortcuts" style="margin-top: 0.4rem;">
+      <button onclick="flashSelectAll()">✓ All topics</button>
+      <button onclick="flashSelectNone()">✗ Clear</button>
+      <span style="color: var(--soft); font-size: 0.78rem;">or:</span>
+      <select id="flash-up-to" onchange="flashSelectUpTo(this.value)">
+        <option value="">Up to lesson…</option>
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+        <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+        <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+        <option value="13">13</option>
+      </select>
+    </div>
+    <div class="topic-checklist" id="flash-topic-checklist"></div>
+    <div class="config-row" style="margin-top: 0.6rem;">
+      <button class="diff-btn" onclick="shuffleFlashcards()">🔀 Shuffle</button>
+      <button class="diff-btn" onclick="restartFlashcards()">🔄 Restart (in order)</button>
+    </div>
+  </div>
+
   <div class="flashcard" id="flashcard" onclick="flipCard()">
     <div class="term" id="card-content">Loading…</div>
   </div>
@@ -1000,6 +1026,8 @@
     <button class="primary" onclick="flipCard()">Flip</button>
     <button onclick="nextCard()">Next →</button>
   </div>
+  <button id="mnemonic-toggle" onclick="toggleMnemonic()" style="width: 100%; margin-top: 0.6rem; padding: 0.6rem; background: #fff4e8; color: #c87b1a; border: 1px dashed #f4b942; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">💡 Show memory aid</button>
+  <div id="mnemonic-panel" style="display: none; margin-top: 0.5rem; padding: 0.9rem 1rem; background: #fffaf2; border-left: 3px solid var(--yellow); border-radius: 0 8px 8px 0; font-size: 0.92rem; line-height: 1.55;"></div>
   <div class="progress" id="card-progress"></div>
 </div>
 
@@ -1104,66 +1132,87 @@ const TOPICS = [
 
 const FLASHCARDS = {
   vocab: [
-    { term: "Polynomial", def: "A sum of terms with variables and exponents (e.g., 3x² + 5x − 7)" },
-    { term: "Binomial", def: "A polynomial with 2 terms, like (x + 3)" },
-    { term: "Trinomial", def: "A polynomial with 3 terms, like x² + 7x + 12" },
-    { term: "Coefficient", def: "The number in front of a variable. In 5x, coefficient is 5" },
-    { term: "Like terms", def: "Terms with the SAME variable AND exponent. 3x² and −5x² are like terms." },
-    { term: "Standard form", def: "Terms ordered from biggest exponent to smallest" },
-    { term: "GCF", def: "Greatest Common Factor — biggest term that divides all" },
-    { term: "Factor (verb)", def: "Break a polynomial into a product of smaller pieces" },
-    { term: "Parabola", def: "The U-shaped graph of a quadratic function" },
-    { term: "Vertex", def: "The highest or lowest point of a parabola" },
-    { term: "Axis of symmetry", def: "Vertical line through the vertex; parabola is mirrored on each side" },
-    { term: "x-intercepts (zeros, roots)", def: "Where the parabola crosses the x-axis. Three names, same thing." },
-    { term: "y-intercept", def: "Where the parabola crosses the y-axis (plug in x = 0)" },
-    { term: "Domain", def: "All x-values that work. For quadratics: ALL real numbers." },
-    { term: "Range", def: "All y-values that occur. y ≥ k if opens up; y ≤ k if down." },
-    { term: "Minimum", def: "Vertex y-value when parabola opens UP (lowest y)" },
-    { term: "Maximum", def: "Vertex y-value when parabola opens DOWN (highest y)" },
-    { term: "Difference of squares", def: "a² − b² = (a + b)(a − b). Pattern for two-term factoring." },
-    { term: "Perfect square trinomial", def: "Factors into something squared, like x² + 6x + 9 = (x+3)²" },
-    { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0. Used for solving by factoring." },
-    { term: "Discriminant", def: "b² − 4ac (part under the √ in quadratic formula). Tells how many real solutions." },
-    { term: "Vertex form", def: "y = a(x − h)² + k. Directly shows the vertex (h, k)." },
-    { term: "Standard form (quadratic)", def: "y = ax² + bx + c. Shows the y-intercept (c)." },
-    { term: "Intercept form (factored)", def: "y = a(x − p)(x − q). Directly shows x-intercepts (p, q)." },
-    { term: "Square root", def: "Opposite of squaring. √25 = 5 because 5² = 25." },
-    { term: "± (plus or minus)", def: "Means two answers exist, one positive and one negative" }
+    { term: "Polynomial", def: "A sum of terms with variables and exponents (e.g., 3x² + 5x − 7)", topics: [1, 2], mnemonic: "POLY = MANY. Polygon has many sides, polynomial has many terms." },
+    { term: "Monomial", def: "A single term: a number times variables (like 3x²)", topics: [1], mnemonic: "MONO = ONE. Monorail (one rail). One term." },
+    { term: "Binomial", def: "A polynomial with exactly 2 terms, like (x + 3)", topics: [1, 2], mnemonic: "BI = TWO. Bicycle has two wheels. Two terms." },
+    { term: "Trinomial", def: "A polynomial with exactly 3 terms, like x² + 7x + 12", topics: [1, 2, 4, 5], mnemonic: "TRI = THREE. Tricycle has three wheels. Three terms." },
+    { term: "Coefficient", def: "The number in front of a variable. In 5x, coefficient is 5.", topics: [1, 2, 4, 5, 13], mnemonic: "The variable's 'bodyguard' — stands right in front. (CO = teammate; the number that works WITH the variable.)" },
+    { term: "Constant", def: "A plain number with no variable, like −7", topics: [1], mnemonic: "Stays the same — CONSTANT. No variable to change its value." },
+    { term: "Like terms", def: "Terms with the SAME variable AND same exponent (e.g., 3x² and −5x²)", topics: [1, 2], mnemonic: "Like terms are TWINS — identical shape, only the number out front differs. Strangers (3x² and 3x) can't combine." },
+    { term: "Standard form (polynomial)", def: "Terms ordered from biggest exponent to smallest", topics: [1], mnemonic: "Read like a book: BIGGEST first, smallest last. (Like how 'standard' English reads left to right.)" },
+    { term: "Degree", def: "The biggest exponent in the polynomial", topics: [1], mnemonic: "The polynomial's RANK — like a general's stripes. Highest exponent wins." },
+    { term: "GCF", def: "Greatest Common Factor — biggest term that divides into every term", topics: [3], mnemonic: "The BIGGEST BOX that fits inside ALL the terms. Pull it out, what's left goes in parens." },
+    { term: "Factor (verb)", def: "Break a polynomial into a product of smaller pieces", topics: [3, 4, 5, 6, 10], mnemonic: "FACTOR = un-do FOIL. Take a single polynomial and find what multiplies to make it." },
+    { term: "Prime number", def: "Only divisible by 1 and itself (2, 3, 5, 7, 11…)", topics: [3], mnemonic: "Primes are LONERS — only friends with 1 and themselves. (4 is NOT prime: 2·2 = 4.)" },
+    { term: "Prime factorization", def: "Breaking a number into primes multiplied: 12 = 2·2·3", topics: [3], mnemonic: "The number's DNA — just primes multiplied. Can't break it down further." },
+    { term: "Parabola", def: "The U-shaped graph of a quadratic function", topics: [7, 8, 9], mnemonic: "PARA (alongside) + BOLA (throwing) = the path a thrown ball makes. U-shape!" },
+    { term: "Quadratic", def: "A polynomial with x² as the highest power", topics: [7, 8, 9, 10, 11, 12, 13], mnemonic: "QUAD = FOUR (square shape). x² is x SQUARED. Quadratics always have a squared term." },
+    { term: "Vertex", def: "The highest or lowest point of a parabola — the tip of the U", topics: [7, 8, 9], mnemonic: "Like 'vertex of a mountain' — the TIPPY-TIP. Where the curve turns around." },
+    { term: "Axis of symmetry (AOS)", def: "Vertical line through the vertex; parabola is mirrored on each side", topics: [7, 8, 9], mnemonic: "The MIRROR LINE. Fold the parabola here — both sides match perfectly." },
+    { term: "Opens up", def: "Parabola is shaped like a smile (when a > 0)", topics: [7, 8, 9], mnemonic: "SMILE 🙂 = positive feelings = positive a." },
+    { term: "Opens down", def: "Parabola is shaped like a frown (when a < 0)", topics: [7, 8, 9], mnemonic: "FROWN 🙁 = negative feelings = negative a." },
+    { term: "Minimum", def: "Vertex y-value when parabola opens UP (lowest point)", topics: [7, 8, 9], mnemonic: "Smile parabola → the BOTTOM of the U is the min. Can't go any lower." },
+    { term: "Maximum", def: "Vertex y-value when parabola opens DOWN (highest point)", topics: [7, 8, 9], mnemonic: "Frown parabola → the TOP of the upside-down U is the max. Can't go any higher." },
+    { term: "x-intercept", def: "Where the parabola crosses the x-axis (where y = 0)", topics: [8, 10], mnemonic: "INTER-CEPTS (crosses) the x-axis. Y must be zero here, because the x-axis is the y=0 line." },
+    { term: "y-intercept", def: "Where the parabola crosses the y-axis (where x = 0)", topics: [7, 8, 9], mnemonic: "INTER-CEPTS the y-axis. Plug in x=0 — whatever y is, that's the y-intercept." },
+    { term: "Root", def: "Same as x-intercept — where the function equals zero", topics: [8, 10, 11, 12, 13], mnemonic: "Like a plant's ROOTS — where the function 'touches ground' (the x-axis)." },
+    { term: "Zero (of a function)", def: "Same as root / x-intercept — where the function = 0", topics: [8, 10, 11, 12, 13], mnemonic: "Three names for one idea: root, zero, x-intercept. All mean 'where y = 0.' Confusing — but true." },
+    { term: "Domain", def: "All x-values that work. For quadratics: ALL real numbers.", topics: [7], mnemonic: "Domain = INPUTS allowed. For quadratics, ANY x works — they're open-armed." },
+    { term: "Range", def: "All y-values that occur. y ≥ k if opens up; y ≤ k if down.", topics: [7], mnemonic: "Range = OUTPUTS that happen. The parabola only reaches above (or below) its vertex." },
+    { term: "Difference of squares", def: "a² − b² which factors into (a + b)(a − b)", topics: [6], mnemonic: "TWO perfect squares with a MINUS. The plus/minus pair cancels the middle when FOILed." },
+    { term: "Perfect square trinomial", def: "A trinomial that factors into something squared, like (x+3)²", topics: [12], mnemonic: "It's 'PERFECT' because it factors into ( )² — something squared. A trinomial that 'wants' to be squared." },
+    { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0. Used to solve by factoring.", topics: [10], mnemonic: "If two things multiply to zero, ONE OF THEM must be zero. Where there's smoke, there's fire." },
+    { term: "Discriminant", def: "b² − 4ac — tells you how many real solutions a quadratic has", topics: [13], mnemonic: "DISCRIMINATES between solution counts: +/2, 0/1, −/none. The bouncer at the solutions door, counting heads." },
+    { term: "Vertex form", def: "y = a(x − h)² + k — directly shows the vertex (h, k)", topics: [9], mnemonic: "The form whose NAME tells you what it shows — the VERTEX. Read (h, k) right off the equation." },
+    { term: "Standard form (quadratic)", def: "y = ax² + bx + c — shows the y-intercept (c)", topics: [7], mnemonic: "The 'default' way to write a quadratic. c is the y-intercept (plug x=0; everything else vanishes)." },
+    { term: "Intercept form", def: "y = a(x − p)(x − q) — shows x-intercepts at p and q", topics: [8], mnemonic: "Form named for what it shows: the INTERCEPTS (roots). At +p and +q — but sign flips!" },
+    { term: "Square root", def: "Opposite of squaring. √25 = 5 because 5² = 25.", topics: [11], mnemonic: "The UN-DO button for squaring. If you squared, then √ takes you back." },
+    { term: "Plus or minus (±)", def: "Means TWO answers — one positive, one negative", topics: [11, 12, 13], mnemonic: "Both +5 AND −5 squared give 25. Un-squaring gives BOTH back. NEVER FORGET THE ±." },
+    { term: "Completing the square", def: "Adding (b/2)² to make a perfect square trinomial", topics: [12], mnemonic: "COMPLETE = add the missing piece. The 'magic number' (b/2)² makes the trinomial a perfect square." },
+    { term: "Quadratic formula", def: "x = (−b ± √(b² − 4ac)) / 2a — always works for quadratics", topics: [13], mnemonic: "The UNIVERSAL HAMMER. Works on every quadratic. 🎵 Sing it to 'Pop Goes the Weasel'! 🎵" },
+    { term: "FOIL", def: "First, Outer, Inner, Last — order for multiplying two binomials", topics: [2], mnemonic: "Every term shakes hands with every term — 4 handshakes in order: First, Outer, Inner, Last." },
+    { term: "AC method", def: "For factoring ax² + bx + c when leading coefficient isn't 1", topics: [5], mnemonic: "Multiply A times C first. Then play 'multiply to ac, add to b.' Split-Group-Pull." }
   ],
   formulas: [
-    { term: "Adding polynomials", def: "Combine like terms (same variable + exponent)" },
-    { term: "FOIL", def: "(a+b)(c+d) = ac + ad + bc + bd" },
-    { term: "Square of a binomial", def: "(a + b)² = a² + 2ab + b²" },
-    { term: "Square of a difference", def: "(a − b)² = a² − 2ab + b²" },
-    { term: "Difference of squares", def: "a² − b² = (a + b)(a − b)" },
-    { term: "Factor x² + bx + c", def: "Find p, q where pq = c and p + q = b → (x + p)(x + q)" },
-    { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0" },
-    { term: "Vertex form", def: "y = a(x − h)² + k → vertex is (h, k)" },
-    { term: "Standard form", def: "y = ax² + bx + c → AOS at x = −b/(2a)" },
-    { term: "Intercept form", def: "y = a(x − p)(x − q) → roots at p and q, AOS at (p+q)/2" },
-    { term: "Square root method", def: "(stuff)² = N → stuff = ±√N" },
-    { term: "Completing the square", def: "Add (b/2)² to both sides of x² + bx = c" },
-    { term: "Quadratic Formula", def: "x = (−b ± √(b² − 4ac)) / 2a" },
-    { term: "Discriminant", def: "b² − 4ac. + = 2 solutions. 0 = 1 sol. − = no real sol." },
-    { term: "Vertex y from standard", def: "Find AOS x = −b/(2a), plug in to get y" }
+    { term: "Adding polynomials", def: "Combine like terms (same variable + exponent)", topics: [1], mnemonic: "Group the TWINS. x² with x²s. x with xs. Constants with constants. Add the numbers out front." },
+    { term: "Subtracting polynomials", def: "Flip every sign in the second polynomial, then add", topics: [1], mnemonic: "FLIP THEN ADD. Subtraction = addition with all signs flipped in the second polynomial. (Every sign! Including the constant!)" },
+    { term: "FOIL pattern", def: "(a + b)(c + d) = ac + ad + bc + bd", topics: [2], mnemonic: "Every term meets every term. F-O-I-L. Say it out loud each problem." },
+    { term: "Square of a sum", def: "(a + b)² = a² + 2ab + b²", topics: [2], mnemonic: "Square, TWICE THE PRODUCT, square. NOT just a² + b² — the middle 2ab is always there!" },
+    { term: "Square of a difference", def: "(a − b)² = a² − 2ab + b²", topics: [2], mnemonic: "Same as sum-squared but middle is NEGATIVE. The end squares stay positive (because squaring kills minus)." },
+    { term: "Difference of squares (pattern)", def: "a² − b² = (a + b)(a − b)", topics: [6], mnemonic: "Sum times difference. The +ab and −ab middle terms CANCEL when FOILed, leaving only a² − b²." },
+    { term: "Sum of squares — STUCK", def: "a² + b² does NOT factor in Algebra 1!", topics: [6], mnemonic: "SUM = STUCK. Difference = factorable. Plus sign? Walk away." },
+    { term: "Factor x² + bx + c", def: "Find p, q where pq = c AND p + q = b → (x + p)(x + q)", topics: [4], mnemonic: "MULTIPLY TO C, ADD TO B. Say it like a mantra every time." },
+    { term: "Factor ax² + bx + c (AC method)", def: "Multiply a·c. Find numbers ×ac, +b. Split middle. Group. Factor pairs. Pull shared parens.", topics: [5], mnemonic: "A·C, F-S-G-P: ac first, Find numbers, Split middle, Group, Pull shared." },
+    { term: "GCF for numbers", def: "Multiply the shared prime factors", topics: [3], mnemonic: "Break each number into primes. CIRCLE the SHARED primes. Multiply circled = GCF." },
+    { term: "GCF for variables", def: "Take the SMALLEST power that appears in every term", topics: [3], mnemonic: "SMALLEST POWER WINS. Can't pull out more x's than the term with the fewest." },
+    { term: "Zero Product Property", def: "If ab = 0 then a = 0 OR b = 0", topics: [10], mnemonic: "One of you must be zero. The math version of 'one of you is the problem.'" },
+    { term: "Vertex form vertex", def: "y = a(x − h)² + k → vertex is (h, k). Sign of h FLIPS!", topics: [9], mnemonic: "(x − 3)² means h = +3 (sign FLIPS inside). k stays the same as written outside." },
+    { term: "Standard form AOS", def: "Axis of symmetry: x = −b / (2a). Plug in for vertex y.", topics: [7], mnemonic: "NEGATIVE B over TWO A. Then plug that x back in to find vertex y." },
+    { term: "Standard form y-intercept", def: "y-intercept is (0, c)", topics: [7], mnemonic: "Plug x=0. Everything with an x vanishes. Only c is left = y-intercept." },
+    { term: "Intercept form roots", def: "y = a(x − p)(x − q) → roots at +p and +q (sign flips!). AOS = (p+q)/2.", topics: [8], mnemonic: "Roots come right out. AOS is the AVERAGE — halfway between the two roots." },
+    { term: "Direction of parabola", def: "a > 0 opens up (smile). a < 0 opens down (frown).", topics: [7, 8, 9], mnemonic: "SMILE 🙂 up, FROWN 🙁 down. Positive feelings = positive a." },
+    { term: "Width of parabola", def: "|a| > 1 narrower; |a| < 1 wider; |a| = 1 standard", topics: [7, 9], mnemonic: "BIGGER a = SKINNIER. Counter-intuitive! (Think: confident skinny person = strong reaction.)" },
+    { term: "Square root method", def: "(stuff)² = N → stuff = ±√N. ALWAYS ±!", topics: [11], mnemonic: "Two numbers (+ and −) both square to N. NEVER FORGET THE ±." },
+    { term: "Completing the square", def: "Take (b/2)². Add to BOTH sides of x² + bx = c. Factor left as (x + b/2)².", topics: [12], mnemonic: "HSAB: Half, Square, Add to Both. The magic number is (b/2)²." },
+    { term: "Quadratic Formula", def: "x = (−b ± √(b² − 4ac)) / 2a", topics: [13], mnemonic: "🎵 Sing to 'Pop Goes the Weasel': x equals negative b, plus-or-minus the square root, of b-squared minus four-a-c, all over two a 🎵" },
+    { term: "Discriminant meaning", def: "+ = 2 real solutions; 0 = 1 solution; − = no real solutions", topics: [13], mnemonic: "DISCRIMINATES the count. Positive = 2 in, zero = 1 in, negative = none in. The bouncer at the solutions door." }
   ],
   traps: [
-    { term: "Trap: (x + 3)²", def: "= x² + 6x + 9, NOT x² + 9. Square = multiply by self, not distribute exponent." },
-    { term: "Trap: Subtracting polynomials", def: "Flip EVERY sign in the second polynomial, including the constant!" },
-    { term: "Trap: Vertex form sign", def: "(x − 3)² → h = +3. (x + 3)² → h = −3. The sign FLIPS." },
-    { term: "Trap: Intercept form sign", def: "(x − 3) means root at +3. (x + 3) means root at −3." },
-    { term: "Trap: Square root method", def: "ALWAYS write ± when taking √. Two answers!" },
-    { term: "Trap: Solving by factoring", def: "MUST set = 0 first. Can't factor and split if right side ≠ 0." },
-    { term: "Trap: a² + b²", def: "Sum of squares does NOT factor in Algebra 1!" },
-    { term: "Trap: GCF leaves −1 or +1", def: "When term equals GCF, it leaves 1 (or −1), not 0!" },
-    { term: "Trap: Combining unlike terms", def: "3x² + 5x is NOT 8x or 8x². Different exponents = stay separate." },
-    { term: "Trap: AC method", def: "Multiply a · c first. Using only c sends you to wrong numbers." },
-    { term: "Trap: Drawing parabolas", def: "Smooth U-curve, NOT a V. The vertex is rounded." },
-    { term: "Trap: Quadratic formula b sign", def: "Use parens: b = −5 → write (−5)², not −5²" },
-    { term: "Trap: Completing the square", def: "Add (b/2)² to BOTH sides, not just left!" },
-    { term: "Trap: Width vs coefficient", def: "BIGGER |a| = NARROWER parabola (counter-intuitive)" },
-    { term: "Trap: Forgetting AOS", def: "Always include axis of symmetry on graphs for full credit" }
+    { term: "Trap: (x + 3)² is NOT x² + 9", def: "(x + 3)² = (x+3)(x+3) = x² + 6x + 9. The middle 6x is REQUIRED.", topics: [2], mnemonic: "SQUARE THE WHOLE THING. Write it twice: (x+3)(x+3). Then FOIL. Never distribute the exponent." },
+    { term: "Trap: Subtracting polynomials", def: "Flip EVERY sign in the second polynomial — including the constant!", topics: [1], mnemonic: "EVERY. SINGLE. SIGN. The constant counts too. (Easy mistake: forgetting to flip the last term.)" },
+    { term: "Trap: Vertex form sign of h", def: "(x − 3)² → h = +3. (x + 3)² → h = −3. Sign FLIPS inside.", topics: [9], mnemonic: "INSIDE FLIPS, outside stays. The +/− in (x ± h)² is opposite of the actual h." },
+    { term: "Trap: Intercept form root sign", def: "(x − 5) → root at +5. (x + 5) → root at −5.", topics: [8], mnemonic: "Same flip rule! Setting (x − 5) = 0 gives x = +5. The sign flips from inside the parens to the actual root." },
+    { term: "Trap: Forgetting ± in square root method", def: "ALWAYS write ± when taking √ of both sides. Two answers.", topics: [11, 12], mnemonic: "TWO ANSWERS, every time. Both +5 and −5 square to 25 — un-squaring gives BOTH back." },
+    { term: "Trap: Solving by factoring without = 0", def: "Set equation = 0 FIRST. Can't factor and split otherwise.", topics: [10], mnemonic: "ZERO FIRST, FACTOR SECOND. The Zero Product Property only works when one side is zero." },
+    { term: "Trap: Sum of squares doesn't factor", def: "a² + b² stays put in Algebra 1. Only DIFFERENCE factors.", topics: [6], mnemonic: "SUM = STUCK. Difference = factorable. Plus sign? Walk away." },
+    { term: "Trap: GCF leaves 1 (or −1)", def: "When a term EQUALS the GCF, it leaves 1 (or −1) behind — not 0!", topics: [3], mnemonic: "Anything divided by itself = 1. Don't leave it blank — write the 1." },
+    { term: "Trap: Combining unlike terms", def: "3x² + 5x is NOT 8x or 8x². Different exponents NEVER combine.", topics: [1], mnemonic: "Different exponents = different species. x² and x are like cats and dogs — they don't combine." },
+    { term: "Trap: AC method first step", def: "Multiply a·c first, NOT just c. Using only c gives wrong numbers.", topics: [5], mnemonic: "ALWAYS ac. The 'A' is in 'AC method' for a reason — don't skip it." },
+    { term: "Trap: Drawing parabolas", def: "Smooth U-curve, NOT a V. The vertex is rounded, not pointed.", topics: [7, 8, 9], mnemonic: "CURVES NOT V'S. A V is from absolute value. Parabolas have gentle, round vertices." },
+    { term: "Trap: Quadratic formula b sign", def: "Use parens around negatives: b = −5 → write (−5)², not −5².", topics: [13], mnemonic: "PARENS PROTECT. (−5)² = 25 ✓. −5² = −25 ✗ (order of operations). Always parens." },
+    { term: "Trap: Completing the square — one side", def: "Add (b/2)² to BOTH sides — not just the left!", topics: [12], mnemonic: "ALGEBRA'S GOLDEN RULE: what you do to one side, you do to the other. No exceptions." },
+    { term: "Trap: Width vs coefficient", def: "BIGGER |a| = NARROWER parabola. Counter-intuitive!", topics: [7, 9], mnemonic: "Big a = SKINNY. Think: confident, intense person is SKINNY in personality. Bigger coefficient = thinner curve." },
+    { term: "Trap: Forgetting AOS on graph", def: "Always label vertex AND axis of symmetry for full credit on graphing problems", topics: [7, 8, 9], mnemonic: "VERTEX + AOS = full credit. Test rubric wants both. Easy points if you remember." }
   ]
 };
 
@@ -1269,12 +1318,6 @@ const QUIZ_BANK = {
     { q: "What's the quadratic formula?", a: ["x = b² − 4ac", "x = (b ± √(b² − 4ac)) / 2a", "x = (−b ± √(b² − 4ac)) / 2a", "x = −b/2a"], correct: 2, why: "x = (−b ± √(b² − 4ac)) / 2a. Sing it to 'Pop Goes the Weasel'!" }
   ]
 };
-
-// ============ STATE ============
-let currentDeck = 'vocab';
-let currentCard = 0;
-let isFlipped = false;
-let currentQuiz = 'factoring';
 
 // ============ NAV ============
 function showView(name) {
@@ -1503,45 +1546,179 @@ function drawParabola() {
 drawParabola();
 
 // ============ FLASHCARDS ============
-function renderDeckPicker() {
-  const picker = document.getElementById('deck-picker');
-  picker.innerHTML = Object.keys(FLASHCARDS).map(d =>
-    `<button class="${d === currentDeck ? 'active' : ''}" onclick="setDeck('${d}')">${d.charAt(0).toUpperCase() + d.slice(1)} (${FLASHCARDS[d].length})</button>`
-  ).join('');
+let currentDeckType = 'vocab'; // 'vocab' | 'formulas' | 'traps' | 'all'
+let flashTopicFilter = new Set([1,2,3,4,5,6,7,8,9,10,11,12,13]); // all by default
+let activeCards = [];
+let currentCardIdx = 0;
+let isFlipped = false;
+let mnemonicVisible = false;
+
+function getDeckSource() {
+  if (currentDeckType === 'all') {
+    return [...FLASHCARDS.vocab, ...FLASHCARDS.formulas, ...FLASHCARDS.traps];
+  }
+  return FLASHCARDS[currentDeckType] || [];
 }
-function setDeck(d) {
-  currentDeck = d;
-  currentCard = 0;
+
+function buildActiveCards() {
+  const source = getDeckSource();
+  activeCards = source.filter(c => (c.topics || []).some(t => flashTopicFilter.has(t)));
+  currentCardIdx = 0;
   isFlipped = false;
-  renderDeckPicker();
+  mnemonicVisible = false;
   renderCard();
 }
+
+function renderDeckPicker() {
+  const picker = document.getElementById('deck-picker');
+  if (!picker) return;
+  const decks = [
+    { key: 'vocab', label: 'Vocab' },
+    { key: 'formulas', label: 'Formulas' },
+    { key: 'traps', label: 'Traps' },
+    { key: 'all', label: 'All mixed' }
+  ];
+  picker.innerHTML = decks.map(d => {
+    const count = d.key === 'all'
+      ? FLASHCARDS.vocab.length + FLASHCARDS.formulas.length + FLASHCARDS.traps.length
+      : FLASHCARDS[d.key].length;
+    return `<button class="diff-btn ${d.key === currentDeckType ? 'active' : ''}" onclick="setDeck('${d.key}')">${d.label} (${count})</button>`;
+  }).join('');
+}
+
+function setDeck(d) {
+  currentDeckType = d;
+  renderDeckPicker();
+  buildActiveCards();
+}
+
+function renderFlashTopicChecklist() {
+  const wrap = document.getElementById('flash-topic-checklist');
+  if (!wrap) return;
+  wrap.innerHTML = Object.entries(TOPIC_NAMES_PRAC).map(([num, name]) => {
+    const n = parseInt(num);
+    const checked = flashTopicFilter.has(n);
+    return `<label class="topic-check ${checked ? 'checked' : ''}" data-topic="${n}">
+      <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleFlashTopic(${n})">
+      <span><strong>${n}.</strong> ${name}</span>
+    </label>`;
+  }).join('');
+}
+
+function toggleFlashTopic(n) {
+  if (flashTopicFilter.has(n)) flashTopicFilter.delete(n);
+  else flashTopicFilter.add(n);
+  renderFlashTopicChecklist();
+  buildActiveCards();
+}
+
+function flashSelectAll() {
+  flashTopicFilter = new Set(Object.keys(TOPIC_NAMES_PRAC).map(Number));
+  renderFlashTopicChecklist();
+  buildActiveCards();
+}
+
+function flashSelectNone() {
+  flashTopicFilter = new Set();
+  renderFlashTopicChecklist();
+  buildActiveCards();
+}
+
+function flashSelectUpTo(n) {
+  if (!n) return;
+  const upTo = parseInt(n);
+  flashTopicFilter = new Set();
+  for (let i = 1; i <= upTo; i++) flashTopicFilter.add(i);
+  renderFlashTopicChecklist();
+  buildActiveCards();
+  document.getElementById('flash-up-to').value = '';
+}
+
+function shuffleFlashcards() {
+  for (let i = activeCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [activeCards[i], activeCards[j]] = [activeCards[j], activeCards[i]];
+  }
+  currentCardIdx = 0;
+  isFlipped = false;
+  mnemonicVisible = false;
+  renderCard();
+}
+
+function restartFlashcards() {
+  buildActiveCards();
+}
+
 function renderCard() {
-  const deck = FLASHCARDS[currentDeck];
-  const card = deck[currentCard];
   const div = document.getElementById('card-content');
+  const progress = document.getElementById('card-progress');
+  const mnemonicPanel = document.getElementById('mnemonic-panel');
+  const mnemonicBtn = document.getElementById('mnemonic-toggle');
+  if (!div || !progress) return;
+
+  if (activeCards.length === 0) {
+    div.className = 'term';
+    div.textContent = 'No cards match your selection. Pick at least one topic.';
+    progress.textContent = '0 cards';
+    if (mnemonicPanel) mnemonicPanel.style.display = 'none';
+    if (mnemonicBtn) mnemonicBtn.style.display = 'none';
+    return;
+  }
+
+  if (mnemonicBtn) mnemonicBtn.style.display = '';
+  const card = activeCards[currentCardIdx];
   div.className = isFlipped ? 'def' : 'term';
   div.textContent = isFlipped ? card.def : card.term;
-  document.getElementById('card-progress').textContent = `Card ${currentCard + 1} of ${deck.length} · tap to flip`;
+  progress.textContent = `Card ${currentCardIdx + 1} of ${activeCards.length} · tap card to flip`;
+
+  // Mnemonic panel
+  if (mnemonicVisible && card.mnemonic) {
+    mnemonicPanel.style.display = 'block';
+    mnemonicPanel.innerHTML = `<strong style="color: #c87b1a;">💡 Memory aid:</strong> ${card.mnemonic}`;
+    mnemonicBtn.textContent = '💡 Hide memory aid';
+  } else {
+    mnemonicPanel.style.display = 'none';
+    mnemonicBtn.textContent = card.mnemonic ? '💡 Show memory aid' : '(no memory aid for this card)';
+    mnemonicBtn.disabled = !card.mnemonic;
+  }
 }
+
 function flipCard() {
+  if (activeCards.length === 0) return;
   isFlipped = !isFlipped;
   renderCard();
 }
+
 function nextCard() {
-  const deck = FLASHCARDS[currentDeck];
-  currentCard = (currentCard + 1) % deck.length;
+  if (activeCards.length === 0) return;
+  currentCardIdx = (currentCardIdx + 1) % activeCards.length;
   isFlipped = false;
+  mnemonicVisible = false;
   renderCard();
 }
+
 function prevCard() {
-  const deck = FLASHCARDS[currentDeck];
-  currentCard = (currentCard - 1 + deck.length) % deck.length;
+  if (activeCards.length === 0) return;
+  currentCardIdx = (currentCardIdx - 1 + activeCards.length) % activeCards.length;
   isFlipped = false;
+  mnemonicVisible = false;
   renderCard();
 }
-renderDeckPicker();
-renderCard();
+
+function toggleMnemonic() {
+  if (activeCards.length === 0) return;
+  const card = activeCards[currentCardIdx];
+  if (!card.mnemonic) return;
+  mnemonicVisible = !mnemonicVisible;
+  renderCard();
+}
+
+function initFlashcards() {
+  renderDeckPicker();
+  renderFlashTopicChecklist();
+  buildActiveCards();
+}
+// initFlashcards() called at the bottom of the script after TOPIC_NAMES_PRAC is initialized
 
 // ============ QUIZ ============
 let selectedQuizTopics = new Set([1, 2, 3, 4, 5]);
@@ -2516,6 +2693,7 @@ function initPractice() {
 }
 initPractice();
 initQuiz();
+initFlashcards();
 </script>
 
 </body>
