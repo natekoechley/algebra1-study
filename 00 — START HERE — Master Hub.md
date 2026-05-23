@@ -26,7 +26,7 @@ You don't need to learn every Algebra 1 thing. You need to confidently do **13 s
 
 ---
 
-## The 13 Topics (in order)
+## The 14 Topics (in order)
 
 Each one is a short Google Doc / Markdown file in this folder. Open in order.
 
@@ -41,6 +41,7 @@ Each one is a short Google Doc / Markdown file in this folder. Open in order.
 | 7 | Graphing Basic Parabolas | 8.1 | `07 — Graphing Basic Parabolas (8.1).md` |
 | 8 | Graphing in Intercept Form | 8.5 | `08 — Graphing Parabolas Intercept Form (8.5).md` |
 | 9 | Graphing in Vertex Form | 8.4 | `09 — Graphing Parabolas Vertex Form (8.4).md` |
+| 14 | Graphing in Standard Form (NEW, per Raj) | 8.3 | `14 — Graphing Standard Form (8.3).md` |
 | 10 | Solving by Factoring (Zero Product) | 7.4 | `10 — Solving by Factoring (7.4).md` |
 | 11 | Solving by Square Roots | 9.3 | `11 — Solving by Square Roots (9.3).md` |
 | 12 | Completing the Square | 9.4 | `12 — Completing the Square (9.4).md` |
@@ -81,24 +82,24 @@ Color key:
 | 6 | Fri May 22 | 🔵 **Mini-Quiz #1** (Topics 1–5) + family meeting | 30 min |
 | 7 | Sat May 23 | 🟠 Review weak spots + Topic 6 (Diff of Squares) — Sat morning co-work | 45 min |
 
-### Week 2 — Graphing & Solving by Factoring (May 24–30)
+### Week 2 — All 4 Graphing Forms + Mini-Quiz (May 24–30)
 | Day | Date | Plan | Time |
 |---|------|------|------|
 | 8 | Sun May 24 | 🟠 Topic 7 (Basic Parabolas 8.1) — co-work afternoon | 45 min |
 | 9 | Mon May 25 (Memorial Day) | 🟠 Topic 8 (Intercept Form 8.5) — co-work morning, screen-free time after | 45 min |
 | 10 | Tue May 26 | 🟠 Topic 9 (Vertex Form 8.4) — Nate eve (the *big* one) | 45 min |
-| 11 | Wed May 27 | 🔵 **Mini-Quiz #2** (Topics 6–9, focus on graphing) | 30 min |
-| 12 | Thu May 28 | 🟠 Topic 10 (Solving by Factoring 7.4) — Nate eve | 30 min |
-| 13 | Fri May 29 | 🟠 Topic 11 (Square Roots 9.3) — Nate WFH co-work before family meeting | 45 min |
-| 14 | Sat May 30 | 🟠 Topic 12 (Completing the Square 9.4) — Sat morning co-work | 45 min |
+| 11 | Wed May 27 | 🟠 **Topic 14 (Standard Form 8.3) — NEW, per Raj** — capstone of graphing | 45 min |
+| 12 | Thu May 28 | 🔵 **Mini-Quiz #2** (Topics 6–9 + 14, focus on graphing) | 30 min |
+| 13 | Fri May 29 | 🟠 Topic 10 (Solving by Factoring 7.4) — Nate WFH before family meeting | 30 min |
+| 14 | Sat May 30 | 🟠 Topic 11 (Square Roots 9.3) — Sat morning co-work | 45 min |
 
-### Week 3 — Mastery & Test Prep (May 31–June 4)
+### Week 3 — Solving Methods + Test Prep (May 31–June 4)
 | Day | Date | Plan | Time |
 |---|------|------|------|
-| 15 | Sun May 31 | 🟠 Topic 13 (Quadratic Formula 9.5) — co-work morning | 45 min |
-| 16 | Mon Jun 1 | 🔵 **Full Mock Test** (all 13 topics, exam style) — Nate eve | 45 min |
-| 17 | Tue Jun 2 | 🟠 Targeted review of mock-test gaps — Nate eve | 30 min |
-| 18 | Wed Jun 3 | 🟣 Light review + flashcards + confidence reset — Nate eve | 20 min |
+| 15 | Sun May 31 | 🟠 Topic 12 (Completing the Square 9.4) — co-work morning | 45 min |
+| 16 | Mon Jun 1 | 🟠 Topic 13 (Quadratic Formula 9.5) — Nate eve | 45 min |
+| 17 | Tue Jun 2 | 🔵 **Full Mock Test** (all 14 topics, exam style) — Nate eve | 50 min |
+| 18 | Wed Jun 3 | 🟠 Targeted review of mock-test gaps + confidence reset — Nate eve | 30 min |
 | 19 | Thu Jun 4 | 🎯 **TEST DAY** — light review only morning of, eat protein, deep breath | — |
 
 **Buffer days:** If a topic takes 2 days instead of 1, push the schedule one day. We have ~5 days of slack before June 4.

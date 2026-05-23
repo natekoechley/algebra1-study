@@ -1,6 +1,6 @@
-# Mock Test — All 13 Topics
-**For Day 16 (Monday, June 1, 2026)**
-**Suggested time:** 45 minutes (just like a real test). Nate co-works.
+# Mock Test — All 14 Topics
+**For Day 17 (Tuesday, June 2, 2026)**
+**Suggested time:** 50 minutes (just like a real test). Nate co-works.
 **Calculator:** Allowed (per Esme's 504 plan accommodations).
 
 ---
@@ -44,7 +44,7 @@
 
 ---
 
-## Section 3 — Graphing (Topics 7, 8, 9) — 20 pts
+## Section 3 — Graphing (Topics 7, 8, 9, 14) — 25 pts
 
 12. (5 pts) For `y = (x − 2)² + 3`:
     - Vertex: __________
@@ -62,6 +62,12 @@
     - Wider or narrower than y = x²? __________
 
 15. (5 pts) Sketch `y = (x − 3)² − 4` on graph paper. Label the vertex, AOS, and at least 4 points.
+
+15b. (5 pts) For `y = x² − 6x + 5` (standard form — Topic 14):
+    - AOS (use x = −b/(2a)): __________
+    - Vertex: __________
+    - y-intercept: __________
+    - One x-intercept: __________
 
 ---
 
@@ -93,9 +99,11 @@ For each problem, just **name the topic** you'd use to solve. Don't actually sol
 
 25. (2 pts) `4x² − 25` (factor) → Topic: __________
 
+26. (2 pts) `y = 3x² − 12x + 5` (find vertex without converting) → Topic: __________
+
 ---
 
-**TOTAL: 100 pts**
+**TOTAL: 107 pts**
 
 ---
 
@@ -121,6 +129,7 @@ For each problem, just **name the topic** you'd use to solve. Don't actually sol
 13. Roots **(−1, 0)** and **(5, 0)**, AOS **x = 2**, Vertex **(2, −9)**
 14. Vertex **(0, 0)**, opens **down**, **narrower** (because |a| = 2 > 1)
 15. Vertex (3, −4), AOS x=3, points like (2, −3), (4, −3), (1, 0), (5, 0). Opens up. Smooth U.
+15b. AOS **x = 3** (−(−6)/(2·1) = 6/2), Vertex **(3, −4)** (plug x=3: 9−18+5=−4), y-intercept **(0, 5)**, x-intercepts at **x = 1 or x = 5** (factor: (x−1)(x−5))
 
 ## Section 4
 16. `(x + 4)(x + 2) = 0` → **x = −4 or x = −2**
@@ -135,6 +144,7 @@ For each problem, just **name the topic** you'd use to solve. Don't actually sol
 23. **Topic 9** (vertex form graphing)
 24. **Topic 2** (multiplying / FOIL)
 25. **Topic 6** (difference of squares)
+26. **Topic 14** (graphing in standard form — AOS = −b/(2a), plug back in for vertex)
 
 ---
 
@@ -142,13 +152,13 @@ For each problem, just **name the topic** you'd use to solve. Don't actually sol
 
 | Score | What it means | What to do |
 |---|---|---|
-| **85–100** | 🎉 Test-ready. Confidence is the only remaining work. | Day 17–18: light review, flashcards, sleep well. |
-| **70–84** | 💪 On track. Identify the 2–3 weakest topics. | Day 17: re-do those topic guides. Day 18: redo the missed problems. |
-| **55–69** | ⚠️ Needs targeted work. | Day 17–18: focus on the 3–4 weakest topics with Nate. Drill those specific problem types. |
-| **Below 55** | 🛑 Don't panic. We have buffer days. | Push test ask to Mr. Mistry to a date a few days later. Use the extra time on the weakest 4 topics. |
+| **90–107** | 🎉 Test-ready. Confidence is the only remaining work. | Day 18: light review, flashcards, sleep well. |
+| **75–89** | 💪 On track. Identify the 2–3 weakest topics. | Day 18: re-do those topic guides + redo the missed problems. |
+| **60–74** | ⚠️ Needs targeted work. | Day 18: focus on the 3–4 weakest topics with Nate. Drill those specific problem types. |
+| **Below 60** | 🛑 Don't panic. We have buffer days. | Push test ask to Mr. Mistry to a date a few days later. Use the extra time on the weakest 4 topics. |
 
 **Most important:** the mock test is **diagnostic, not predictive**. It tells you what to fix. Esme often performs better on the real test than on practice tests (the pressure is similar but the format is more familiar). Use the results to *focus the last 3 days*, not to judge.
 
 ---
 
-*"You found out what you didn't know. That's the whole point. Now we close those gaps." — Nate, June 1*
+*"You found out what you didn't know. That's the whole point. Now we close those gaps." — Nate, June 2*

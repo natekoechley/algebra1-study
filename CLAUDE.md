@@ -11,21 +11,23 @@ Interactive web app + Markdown study kit for an Algebra 1 student preparing for 
 ## Who & Why
 
 - **Student:** Esme (16, sophomore at Tam High, ADHD + dyscalculia, currently struggling with Algebra 1 — see memory notes if relevant).
-- **Teacher:** Mr. Mistry, Esme's Algebra 1 teacher. He agreed to a custom-built make-up test covering a condensed essentials curriculum (his spreadsheet defines the 13 topics).
+- **Teacher:** Mr. Mistry, Esme's Algebra 1 teacher. He agreed to a custom-built make-up test covering a condensed essentials curriculum. His original spreadsheet defined 13 topics; on May 21, 2026 he emailed a "Graphing Quadratics Review" handout adding **Topic 14: Graphing in Standard Form (8.3)**, now integrated into the kit.
 - **Tutor:** Nate (her father — the human you're talking to).
 - **Tutor consultant:** Julia, Esme's regular tutor (Mondays 5pm).
 
 ## Critical dates
 
 - **Plan start:** Sunday, May 17, 2026 (Day 1 of a 19-day plan).
-- **Mock test:** Monday, June 1, 2026 (Day 16) — full 100-pt simulation.
+- **Mock test:** Tuesday, June 2, 2026 (Day 17) — full 107-pt simulation. (Shifted from Day 16 when Topic 14 was inserted as Day 11.)
 - **Real test (target):** ~Thursday, June 4, 2026 (Day 19), the week before school ends.
 - **School ends:** Thursday, June 11, 2026 (some buffer days available).
 - **Family meetings:** Sun 7pm, Tue 7:45pm, Fri 6:30pm (factored into the schedule).
 
-## The 13 topics (Mr. Mistry's spreadsheet)
+## The 14 topics (Mr. Mistry's spreadsheet + May 2026 update)
 
-Source: [Google Sheet](https://docs.google.com/spreadsheets/d/1reiPf1mvEb37xc8f8pLlP02DhvD33Y6hz7LfPENkUPw/edit). All map to Big Ideas Math Algebra 1 (cc19), chapters 7–9.
+Source: [Google Sheet](https://docs.google.com/spreadsheets/d/1reiPf1mvEb37xc8f8pLlP02DhvD33Y6hz7LfPENkUPw/edit) plus the "Graphing Quadratics Review" PDF Mr. Mistry emailed on May 21, 2026 (Topic 14). All map to Big Ideas Math Algebra 1 (cc19), chapters 7–9.
+
+Schedule order: 1, 2, 3, 4, 5, 6, 7, 8, 9, **14** (capstone of graphing block), 10, 11, 12, 13. The "14" is intentionally placed after Topic 9 in the sequence so it caps the graphing block while keeping the numeric label that matches its add-on origin.
 
 | # | Topic | Textbook |
 |---|-------|----------|
@@ -38,6 +40,7 @@ Source: [Google Sheet](https://docs.google.com/spreadsheets/d/1reiPf1mvEb37xc8f8
 | 7 | Graphing Basic Parabolas (y = ax²) | 8.1 |
 | 8 | Graphing in Intercept Form | 8.5 |
 | 9 | Graphing in Vertex Form | 8.4 |
+| **14** | **Graphing in Standard Form (NEW, per Raj)** | **8.3** |
 | 10 | Solving by Factoring (Zero Product) | 7.4 |
 | 11 | Solving by Square Roots | 9.3 |
 | 12 | Completing the Square | 9.4 |
@@ -68,8 +71,8 @@ algebra1-study/
 ├── 00 — One-Page Wall Cheat Sheet.md        # Print + tape to wall
 ├── 00 — Printable Schedule (Pin to Wall).md # 19-day schedule with checkboxes
 ├── 00 — Mini-Quiz #1 (Day 6, May 22).md     # After topics 1–5
-├── 00 — Mini-Quiz #2 (Day 11, May 27).md    # After topics 6–9
-├── 00 — Mock Test (Day 16, June 1).md       # Full 100-pt simulation
+├── 00 — Mini-Quiz #2 (Day 12, May 28).md    # After topics 6–9 + 14
+├── 00 — Mock Test (Day 17, June 2).md       # Full 107-pt simulation (all 14 topics)
 │
 ├── 01 — Adding & Subtracting Polynomials (7.1).md
 ├── 02 — Multiplying Polynomials (7.2).md
@@ -84,6 +87,11 @@ algebra1-study/
 ├── 11 — Solving by Square Roots (9.3).md
 ├── 12 — Completing the Square (9.4).md
 ├── 13 — Quadratic Formula (9.5).md
+├── 14 — Graphing Standard Form (8.3).md       # NEW — per Raj's May 2026 handout
+│
+├── Cheatsheet — Factoring (Topics 1–6).pdf     # One-page, teacher-approval-ready
+├── Cheatsheet — Graphing (Topics 7–9, 14).pdf
+├── Cheatsheet — Solving (Topics 10–13).pdf
 │
 ├── flashcards-vocab.csv             # 40 vocab terms (Quizlet-import format)
 ├── flashcards-formulas.csv          # 22 formulas
@@ -104,7 +112,7 @@ The HTML site is a single-page app, ~150KB, no build step, vanilla JS + minimal 
 
 ### Sections (tabs in top nav):
 1. **🏠 Home** — Auto-detects which day of the 19-day plan today is. Shows today's topic.
-2. **📘 Topics** — All 13 topics. Click any to see a detail view with two tabs:
+2. **📘 Topics** — All 14 topics. Click any to see a detail view with two tabs:
    - **Quick Recipe** — crisp summary (recipe steps, formula, mnemonic, traps)
    - **Full Guide** — fetches and renders the corresponding `.md` file via Marked.js. Cached after first load.
 3. **📝 Practice** — Generates fresh problems on demand:
@@ -132,7 +140,7 @@ Each `steps` array contains objects: `{title, narrative, math}`. The narrative d
 
 Difficulty knobs in each generator scale number ranges and (for graphing topics) the set of `a` coefficients available. All factoring problems still produce clean integer factorizations.
 
-**Tested** at all 3 difficulty levels for all 13 topics — 39 trials, all pass.
+**Tested** at all 3 difficulty levels for all 14 topics — 42 trials, all pass.
 
 ### Quiz bank
 

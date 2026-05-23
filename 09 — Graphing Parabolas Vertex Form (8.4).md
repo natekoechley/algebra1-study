@@ -80,6 +80,24 @@ Or: **"HK = Hidden inside (flips), Kept outside (stays)."**
 
 ---
 
+## 📐 The ax² Heights Pattern (faster than table-of-values)
+
+Once you have the vertex (h, k), don't redo a table — use the **heights pattern**:
+
+| Steps left/right of vertex | y-jump from vertex |
+|---|---|
+| ±1 | a · 1 = **a** |
+| ±2 | a · 4 = **4a** |
+| ±3 | a · 9 = **9a** |
+
+For `y = 2(x − 3)² + 1`, the vertex is (3, 1) and a = 2 → heights **2, 8, 18**. So:
+- (4, 3) and (2, 3) — 1 step out, up by 2
+- (5, 9) and (1, 9) — 2 steps out, up by 8
+
+Memorize **1, 4, 9** as the parent pattern (for a = 1). Multiply by `a` for any other parabola. Same pattern used in Topics 7, 8, and 14.
+
+---
+
 ## ⚠️ Common Traps
 
 1. **The sign of h.** `(x − 3)²` → h = +3 (not −3). `(x + 3)²` → h = −3 (not +3). **#1 mistake.**

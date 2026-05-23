@@ -1,7 +1,7 @@
-# Mini-Quiz #2 — Topics 6–9 (Difference of Squares + All Graphing)
-**For Day 11 (Wednesday, May 27, 2026)**
-**Suggested time:** 25 min. Cheat sheet allowed.
-**Why this quiz focuses on graphing:** Mr. Mistry has flagged repeatedly that graphing is where Esme loses the most test points. This is the diagnostic for the area that matters most.
+# Mini-Quiz #2 — Topics 6–9, 14 (Difference of Squares + All 4 Graphing Forms)
+**For Day 12 (Thursday, May 28, 2026)**
+**Suggested time:** 30 min. Cheat sheet allowed.
+**Why this quiz focuses on graphing:** Mr. Mistry has flagged repeatedly that graphing is where Esme loses the most test points. Standard form (Topic 14, added per Raj's May 21 handout) is the form most commonly seen on tests. This is the diagnostic for the area that matters most.
 
 ---
 
@@ -42,7 +42,19 @@
    - AOS: __________
    - Opens up or down: __________
 
-**Total: 20 pts**
+## Part E — Standard Form (Topic 14) — 6 pts
+
+8. (3) For `y = x² − 4x + 3`:
+   - AOS: __________
+   - Vertex: __________
+   - y-intercept: __________
+
+9. (3) For `y = x² + 6x + 5`:
+   - AOS: __________
+   - Vertex: __________
+   - One more point using heights pattern: __________
+
+**Total: 26 pts**
 
 ---
 
@@ -55,15 +67,17 @@
 5. x-intercepts: **(1, 0)** and **(5, 0)**, vertex: AOS = 3, y = −(3−1)(3−5) = −(2)(−2) = 4 → **(3, 4)**, opens **down**
 6. Vertex **(5, 2)**, AOS **x = 5**, y(3) = (3−5)² + 2 = 4 + 2 = **6**
 7. Vertex **(−3, 4)** (sign flip!), AOS **x = −3**, opens **down** (a is negative)
+8. AOS **x = 2** (−b/2a = 4/2), Vertex **(2, −1)** (plug x=2: 4−8+3=−1), y-intercept **(0, 3)**
+9. AOS **x = −3** (−b/2a = −6/2), Vertex **(−3, −4)** (plug x=−3: 9−18+5=−4), heights pattern (a=1): point 1 step left/right = (−2, −3) or (−4, −3)
 
 ---
 
 ## 📊 What Your Score Means
 
-- **17–20:** 🎉 Graphing is solid. The rest of the course should flow.
-- **13–16:** Almost there. Note which form you wobbled on. Re-do those examples in the topic file.
-- **9–12:** Need targeted graphing work. Spend extra time on Topic 9 (Vertex Form) — most leverage.
-- **Below 9:** Schedule a 45-min co-work block with Nate this weekend on graphing. We have time.
+- **22–26:** 🎉 Graphing is solid. The rest of the course should flow.
+- **17–21:** Almost there. Note which form you wobbled on. Re-do those examples in the topic file.
+- **12–16:** Need targeted graphing work. Spend extra time on the form you missed most — likely vertex (Topic 9) or standard (Topic 14).
+- **Below 12:** Schedule a 45-min co-work block with Nate this weekend on graphing. We have time.
 
 ---
 
@@ -77,4 +91,4 @@ This is the #1 test trap. If you ace this on the real test, you'll be ahead of m
 
 ---
 
-*Now you know what to drill in Week 3. The information is the gift. — Day 11 of 19.*
+*Now you know what to drill in Week 3. The information is the gift. — Day 12 of 19.*

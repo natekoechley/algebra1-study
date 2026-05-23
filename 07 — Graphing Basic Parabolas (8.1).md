@@ -78,6 +78,24 @@ For axis of symmetry of basic `y = ax²`: **always x = 0.** (The y-axis itself.)
 
 ---
 
+## 📐 The ax² Heights Pattern (NEW — per Raj, May 2026)
+
+From the vertex, the heights of the parabola at 1, 2, 3 steps left/right follow a clean pattern:
+
+| Steps from vertex | Height (y-jump from vertex) |
+|---|---|
+| ±1 | a · 1 = **a** |
+| ±2 | a · 4 = **4a** |
+| ±3 | a · 9 = **9a** |
+
+So for **y = x²** (a = 1): heights are **1, 4, 9.**
+For **y = 2x²** (a = 2): heights are **2, 8, 18.**
+For **y = ½x²** (a = ½): heights are **0.5, 2, 4.5.**
+
+This shortcut works for **every parabola** — Topics 7, 8, 9, and 14 all use it once you've found the vertex. Memorize **1, 4, 9** as the parent pattern and just multiply by `a`.
+
+---
+
 ## ⚠️ Common Traps
 
 1. **Forgetting the negative pairs.** When x = −2, x² = +4 (negative squared is positive). Easy to miscompute.

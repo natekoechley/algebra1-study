@@ -67,6 +67,20 @@ Sign trick: **"The sign flips between the parens and the intercept."** `(x − 5
 
 ---
 
+## 📐 The ax² Heights Pattern (for extra points beyond the vertex)
+
+Once you have the vertex from AOS = (p+q)/2, use the **heights pattern** to plot more points:
+
+| Steps left/right of vertex | y-jump from vertex |
+|---|---|
+| ±1 | a · 1 = **a** |
+| ±2 | a · 4 = **4a** |
+| ±3 | a · 9 = **9a** |
+
+Memorize **1, 4, 9** for a = 1. Multiply by `a` for any other parabola. Same pattern used in Topics 7, 9, and 14.
+
+---
+
 ## ⚠️ Common Traps
 
 1. **Sign flip.** `(x − 3)` means x-intercept at **+3**, not −3. This is the #1 mistake. Highlight the sign.

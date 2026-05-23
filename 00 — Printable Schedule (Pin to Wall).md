@@ -1,4 +1,4 @@
-# Esme's 19-Day Math Plan — May 17 → June 4, 2026
+# Esme's 19-Day Math Plan — May 17 → June 4, 2026 · 14 Topics
 
 **Target test:** Thursday, June 4 (last week of school)
 **Sessions:** 15–20 min/day (sometimes a co-work session adds 15–30 more)
@@ -21,16 +21,16 @@ Print this. Pin it where you can see it. Check off each day.
 
 ---
 
-## Week 2 — Graphing & Solving by Factoring
+## Week 2 — Graphing (the 4 forms) + Mini-Quiz
 
 ```
 ☐ Day 8  Sun May 24   Topic 7 (Basic Parabolas 8.1) — use Desmos!       🟠 45 min PM
 ☐ Day 9  Mon May 25   Topic 8 (Intercept Form 8.5)  — Memorial Day       🟠 45 min AM
 ☐ Day 10 Tue May 26   Topic 9 (Vertex Form 8.4) — THE BIG ONE            🟠 45 min Nate eve
-☐ Day 11 Wed May 27   ★ MINI-QUIZ #2 (Topics 6–9) ★                      🔵 30 min Nate eve
-☐ Day 12 Thu May 28   Topic 10 (Solving by Factoring 7.4)               🟠 30 min Nate eve
-☐ Day 13 Fri May 29   Topic 11 (Square Roots 9.3)                       🟠 45 min — Fri WFH, before family meeting
-☐ Day 14 Sat May 30   Topic 12 (Completing the Square 9.4)              🟠 45 min Sat AM
+☐ Day 11 Wed May 27   Topic 14 (Standard Form 8.3) — NEW, per Raj       🟠 45 min Nate eve
+☐ Day 12 Thu May 28   ★ MINI-QUIZ #2 (Topics 6–9 + 14) ★                🔵 30 min Nate eve
+☐ Day 13 Fri May 29   Topic 10 (Solving by Factoring 7.4)               🟠 30 min — Fri WFH, before family meeting
+☐ Day 14 Sat May 30   Topic 11 (Square Roots 9.3)                       🟠 45 min Sat AM
 ```
 
 ---
@@ -38,10 +38,10 @@ Print this. Pin it where you can see it. Check off each day.
 ## Week 3 — Mastery & Test Prep
 
 ```
-☐ Day 15 Sun May 31   Topic 13 (Quadratic Formula 9.5)                  🟠 45 min AM
-☐ Day 16 Mon Jun 1    ★ FULL MOCK TEST (all 13 topics) ★                🔵 45 min Nate eve
-☐ Day 17 Tue Jun 2    Targeted review of mock-test gaps                 🟠 30 min Nate eve
-☐ Day 18 Wed Jun 3    Light review + flashcards + confidence reset      🟣 20 min Nate eve
+☐ Day 15 Sun May 31   Topic 12 (Completing the Square 9.4)              🟠 45 min AM
+☐ Day 16 Mon Jun 1    Topic 13 (Quadratic Formula 9.5)                  🟠 45 min Nate eve
+☐ Day 17 Tue Jun 2    ★ FULL MOCK TEST (all 14 topics) ★                🔵 50 min Nate eve
+☐ Day 18 Wed Jun 3    Targeted review of mock-test gaps + confidence    🟠 30 min Nate eve
 ☐ Day 19 Thu Jun 4    🎯 TEST DAY 🎯  Eat protein. Breathe. You've got this.
 ```
 

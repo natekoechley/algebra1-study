@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algebra 1 Study Site — 13 Topics for the Test</title>
+<title>Algebra 1 Study Site — 14 Topics for the Test</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <style>
   :root {
@@ -853,7 +853,7 @@
 
 <header>
   <h1>📐 Algebra 1 Study Site</h1>
-  <p>13 topics. 19 days. You've got this.</p>
+  <p>14 topics. 19 days. You've got this.</p>
   <p style="font-size: 0.78rem; margin-top: 0.4rem;"><a href="./README.md" style="color: var(--soft); text-decoration: none;">📚 All study materials (Markdown guides, schedule, quizzes) →</a></p>
 </header>
 
@@ -865,6 +865,7 @@
   <button onclick="showView('flashcards')">🎴 Flashcards</button>
   <button onclick="showView('quiz')">✅ Quiz</button>
   <button onclick="showView('cheatsheet')">🚨 Cheat Sheet</button>
+  <button onclick="showView('downloads')">📥 Downloads</button>
   <button onclick="showView('panic')">😰 Panic</button>
 </nav>
 
@@ -890,15 +891,20 @@
     <p>👉 Or text Nate a photo of the problem.</p>
   </div>
   <div class="card">
+    <h2>📥 Printables &amp; Downloads</h2>
+    <p>Three one-page PDF cheatsheets (factoring / graphing / solving), the mock test, the schedule, and all topic guides as files.</p>
+    <p>👉 Open the <a href="#" onclick="showView('downloads')">Downloads tab</a>.</p>
+  </div>
+  <div class="card">
     <h2>Why this kit exists</h2>
-    <p>Mr. Mistry picked 13 specific things you need to know. We don't have to learn everything in algebra — just these. One topic at a time, with the recipe right in front of you. By June 4 you'll be ready.</p>
+    <p>Mr. Mistry picked these 14 specific things you need to know. We don't have to learn everything in algebra — just these. One topic at a time, with the recipe right in front of you. By June 4 you'll be ready.</p>
   </div>
 </div>
 
 <!-- ============ TOPICS ============ -->
 <div id="topics" class="view">
   <div id="topic-list-wrap">
-    <h2>The 13 Topics</h2>
+    <h2>The 14 Topics</h2>
     <p style="color: var(--soft); font-size: 0.9rem;">Tap any topic to see the recipe, steps, and worked examples.</p>
     <div class="topic-list" id="topic-list"></div>
   </div>
@@ -935,6 +941,7 @@
   <div class="practice-controls">
     <button onclick="generateNewProblems()">🔄 New Problems</button>
     <button class="secondary" onclick="showAllSolutions()">📖 Show / Hide All Solutions</button>
+    <button class="secondary" onclick="printPracticeSheet()" title="Open a print-friendly view (page 1 = problems + work space, page 2 = answer key)">🖨️ Print practice sheet</button>
   </div>
 
   <div id="practice-problems"></div>
@@ -1071,6 +1078,77 @@
   <div id="cheat-list"></div>
 </div>
 
+<!-- ============ DOWNLOADS ============ -->
+<div id="downloads" class="view">
+  <h2>📥 Downloads &amp; Printables</h2>
+  <p style="color: var(--soft); font-size: 0.95rem;">Everything that's been built for this prep, in one place. Click any link to open or download.</p>
+
+  <div class="card" style="margin-top: 1rem;">
+    <h3>📄 One-Page PDF Cheatsheets (print these — bring to test)</h3>
+    <p style="color: var(--soft); font-size: 0.85rem; margin-bottom: 0.6rem;">Maximally-dense, teacher-approval-ready reference cards. Print on Letter paper. Get them pre-approved by Mr. Mistry before test day.</p>
+    <ul style="line-height: 1.9;">
+      <li>📄 <a href="./Cheatsheet%20%E2%80%94%20Factoring%20(Topics%201%E2%80%936).pdf" target="_blank" rel="noopener"><strong>Factoring Cheatsheet</strong></a> — Topics 1–6 (GCF, trinomials, AC method, difference of squares, FOIL)</li>
+      <li>📄 <a href="./Cheatsheet%20%E2%80%94%20Graphing%20(Topics%207%E2%80%939,%2014).pdf" target="_blank" rel="noopener"><strong>Graphing Cheatsheet</strong></a> — Topics 7–9 + 14 (all 4 forms, ax² heights pattern, conversion table)</li>
+      <li>📄 <a href="./Cheatsheet%20%E2%80%94%20Solving%20(Topics%2010%E2%80%9313).pdf" target="_blank" rel="noopener"><strong>Solving Cheatsheet</strong></a> — Topics 10–13 (factoring, square root, completing the square, quadratic formula)</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top: 1rem;">
+    <h3>✅ Quizzes &amp; Mock Test</h3>
+    <p style="color: var(--soft); font-size: 0.85rem; margin-bottom: 0.6rem;">Open in your browser (renders nicely via GitHub). Print from there. Or use the "🖨️ Print practice sheet" button on the Practice tab for fresh paper-style problems on any topic.</p>
+    <ul style="line-height: 1.9;">
+      <li>✅ <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20Mini-Quiz%20%231%20%28Day%206%2C%20May%2022%29.md" target="_blank" rel="noopener"><strong>Mini-Quiz #1</strong></a> — Day 6 (Fri May 22) · Topics 1–5 · 20 pts</li>
+      <li>✅ <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20Mini-Quiz%20%232%20%28Day%2012%2C%20May%2028%29.md" target="_blank" rel="noopener"><strong>Mini-Quiz #2</strong></a> — Day 12 (Thu May 28) · Topics 6–9 + 14 · 26 pts</li>
+      <li>🎯 <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20Mock%20Test%20%28Day%2017%2C%20June%202%29.md" target="_blank" rel="noopener"><strong>Full Mock Test</strong></a> — Day 17 (Tue Jun 2) · All 14 topics · 107 pts · 50 min</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top: 1rem;">
+    <h3>📅 Schedule &amp; Reference</h3>
+    <ul style="line-height: 1.9;">
+      <li>🗂️ <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20START%20HERE%20%E2%80%94%20Master%20Hub.md" target="_blank" rel="noopener"><strong>Master Hub</strong></a> — orientation, full plan, panic card</li>
+      <li>📅 <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20Printable%20Schedule%20%28Pin%20to%20Wall%29.md" target="_blank" rel="noopener"><strong>Printable 19-Day Schedule</strong></a> — pin to the wall, check off each day</li>
+      <li>📋 <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20One-Page%20Wall%20Cheat%20Sheet.md" target="_blank" rel="noopener"><strong>One-Page Wall Cheat Sheet</strong></a> — formulas at a glance</li>
+      <li>👨 <a href="https://github.com/natekoechley/algebra1-study/blob/main/00%20%E2%80%94%20Nate%27s%20Tutor%20Primer.md" target="_blank" rel="noopener"><strong>Nate's Tutor Primer</strong></a> — "new math" notes for the co-work blocks</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top: 1rem;">
+    <h3>🎴 Flashcards (Quizlet / Anki import)</h3>
+    <p style="color: var(--soft); font-size: 0.85rem; margin-bottom: 0.6rem;">Or just use the in-site 🎴 Flashcards tab — same content.</p>
+    <ul style="line-height: 1.9;">
+      <li>🎴 <a href="./flashcards-vocab.csv" target="_blank" rel="noopener">Vocabulary CSV</a> — 40 terms</li>
+      <li>🎴 <a href="./flashcards-formulas.csv" target="_blank" rel="noopener">Formulas CSV</a> — 22 cards</li>
+      <li>🎴 <a href="./flashcards-traps.csv" target="_blank" rel="noopener">Common Traps CSV</a> — 15 cards</li>
+      <li>📖 <a href="https://github.com/natekoechley/algebra1-study/blob/main/Quizlet%20Import%20Instructions.md" target="_blank" rel="noopener">Quizlet import instructions</a></li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top: 1rem;">
+    <h3>📘 Topic Guides (also viewable inside the 📘 Topics tab)</h3>
+    <p style="color: var(--soft); font-size: 0.85rem;">Each guide: ELI5, recipe, vocab, worked example, 5 practice problems, mnemonic, common traps, tutor notes.</p>
+    <p style="color: var(--soft); font-size: 0.8rem; margin-bottom: 0.4rem;">Direct file links (opens nicely on GitHub):</p>
+    <ul style="line-height: 1.7; font-size: 0.92rem; columns: 2; column-gap: 1.5rem;">
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/01%20%E2%80%94%20Adding%20%26%20Subtracting%20Polynomials%20%287.1%29.md" target="_blank" rel="noopener">Topic 1 — Adding/Subtracting Polynomials</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/02%20%E2%80%94%20Multiplying%20Polynomials%20%287.2%29.md" target="_blank" rel="noopener">Topic 2 — Multiplying (FOIL)</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/03%20%E2%80%94%20Greatest%20Common%20Factor%20%28GCF%29.md" target="_blank" rel="noopener">Topic 3 — GCF</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/04%20%E2%80%94%20Factoring%20Trinomials%20Basic%20%287.5%29.md" target="_blank" rel="noopener">Topic 4 — Factoring Basic</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/05%20%E2%80%94%20Factoring%20Trinomials%20Advanced%20%287.6%29.md" target="_blank" rel="noopener">Topic 5 — Factoring Advanced</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/06%20%E2%80%94%20Difference%20of%20Squares%20%287.7%29.md" target="_blank" rel="noopener">Topic 6 — Difference of Squares</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/07%20%E2%80%94%20Graphing%20Basic%20Parabolas%20%288.1%29.md" target="_blank" rel="noopener">Topic 7 — Basic Parabolas</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/08%20%E2%80%94%20Graphing%20Parabolas%20Intercept%20Form%20%288.5%29.md" target="_blank" rel="noopener">Topic 8 — Intercept Form</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/09%20%E2%80%94%20Graphing%20Parabolas%20Vertex%20Form%20%288.4%29.md" target="_blank" rel="noopener">Topic 9 — Vertex Form</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/14%20%E2%80%94%20Graphing%20Standard%20Form%20%288.3%29.md" target="_blank" rel="noopener"><strong>Topic 14 — Standard Form (NEW)</strong></a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/10%20%E2%80%94%20Solving%20by%20Factoring%20%287.4%29.md" target="_blank" rel="noopener">Topic 10 — Solving by Factoring</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/11%20%E2%80%94%20Solving%20by%20Square%20Roots%20%289.3%29.md" target="_blank" rel="noopener">Topic 11 — Square Roots</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/12%20%E2%80%94%20Completing%20the%20Square%20%289.4%29.md" target="_blank" rel="noopener">Topic 12 — Completing the Square</a></li>
+      <li><a href="https://github.com/natekoechley/algebra1-study/blob/main/13%20%E2%80%94%20Quadratic%20Formula%20%289.5%29.md" target="_blank" rel="noopener">Topic 13 — Quadratic Formula</a></li>
+    </ul>
+  </div>
+
+  <p style="color: var(--soft); font-size: 0.8rem; margin-top: 1rem; text-align: center;">All files live in the same GitHub repo as this site. Print, share, mark up — they're yours.</p>
+</div>
+
 <!-- ============ PANIC ============ -->
 <div id="panic" class="view">
   <div class="panic-card">
@@ -1098,6 +1176,7 @@
       <tr><td>Graph y = ax²</td><td>Topic 7</td></tr>
       <tr><td>Graph from (x − p)(x − q)</td><td>Topic 8</td></tr>
       <tr><td>Graph from (x − h)² + k</td><td>Topic 9</td></tr>
+      <tr><td>Graph from ax² + bx + c (standard)</td><td>Topic 14 (AOS = −b/2a)</td></tr>
       <tr><td>Solve, factors easily</td><td>Topic 10</td></tr>
       <tr><td>Solve, looks like (stuff)² = #</td><td>Topic 11</td></tr>
       <tr><td>Solve by completing square</td><td>Topic 12</td></tr>
@@ -1127,7 +1206,8 @@ const TOPICS = [
   { num: 10, name: "Solving by Factoring (Zero Product)", section: "7.4", recipe: ["Move everything to one side; other side = 0.","Factor the polynomial.","Set each factor equal to zero.","Solve each mini-equation.","Write BOTH solutions.","Check by plugging back in."], formula: "x² + 5x − 14 = 0 → (x+7)(x−2)=0 → x = −7 or 2", mnemonic: "Equation must equal ZERO before factoring to solve", trap: "Cannot do this with one side ≠ 0. Move everything left first." },
   { num: 11, name: "Solving by Square Roots", section: "9.3", recipe: ["Isolate the squared part.","Take square root of both sides.","Don't forget ± !","Solve for x.","Simplify if needed."], formula: "(x − 3)² = 16 → x − 3 = ±4 → x = 7 or −1", mnemonic: "Square root means PLUS OR MINUS", trap: "Forgetting the ±. Always two answers!" },
   { num: 12, name: "Completing the Square", section: "9.4", recipe: ["Move c to right side.","Compute (b/2)² — half of b, squared.","Add (b/2)² to BOTH sides.","Factor left as (x + b/2)².","Take square root, with ±.","Solve for x."], formula: "x² + 6x − 7 = 0 → (x+3)² = 16 → x = 1 or −7", mnemonic: "Half, Square, Add to Both (HSAB)", trap: "Forgetting to add to BOTH sides. Algebra rule!" },
-  { num: 13, name: "The Quadratic Formula", section: "9.5", recipe: ["Get into standard form (= 0).","Identify a, b, c (with signs!).","Compute discriminant: b² − 4ac.","Take square root of discriminant.","x = (−b ± √disc) / 2a","Split into two answers (+ and −)."], formula: "x = (−b ± √(b² − 4ac)) / 2a", mnemonic: "🎵 'Pop Goes the Weasel' — x equals negative b…", trap: "Use parens around negatives: b = −5 → write (−5)², not −5²." }
+  { num: 13, name: "The Quadratic Formula", section: "9.5", recipe: ["Get into standard form (= 0).","Identify a, b, c (with signs!).","Compute discriminant: b² − 4ac.","Take square root of discriminant.","x = (−b ± √disc) / 2a","Split into two answers (+ and −)."], formula: "x = (−b ± √(b² − 4ac)) / 2a", mnemonic: "🎵 'Pop Goes the Weasel' — x equals negative b…", trap: "Use parens around negatives: b = −5 → write (−5)², not −5²." },
+  { num: 14, name: "Graphing in Standard Form (y = ax² + bx + c)", section: "8.3", recipe: ["Find AOS: x = −b / (2a).","Plug AOS x into equation for vertex y.","Plot y-intercept at (0, c) and its mirror across AOS.","Use ax² heights pattern (1a, 4a, 9a) from vertex.","Smooth U through points. Label vertex, AOS.","(Optional) Find x-intercepts via factoring/QF."], formula: "y = x² − 6x + 5 → AOS x=3, vertex (3,−4), y-int (0,5)", mnemonic: "AOS, VERTEX, c, HEIGHTS — four steps, four words", trap: "Sign of b in AOS formula: b = −6 → x = −(−6)/(2·1) = +3. Watch the double-negative." }
 ];
 
 const FLASHCARDS = {
@@ -1164,7 +1244,7 @@ const FLASHCARDS = {
     { term: "Zero Product Property", def: "If ab = 0, then a = 0 or b = 0. Used to solve by factoring.", topics: [10], mnemonic: "If two things multiply to zero, ONE OF THEM must be zero. Where there's smoke, there's fire." },
     { term: "Discriminant", def: "b² − 4ac — tells you how many real solutions a quadratic has", topics: [13], mnemonic: "DISCRIMINATES between solution counts: +/2, 0/1, −/none. The bouncer at the solutions door, counting heads." },
     { term: "Vertex form", def: "y = a(x − h)² + k — directly shows the vertex (h, k)", topics: [9], mnemonic: "The form whose NAME tells you what it shows — the VERTEX. Read (h, k) right off the equation." },
-    { term: "Standard form (quadratic)", def: "y = ax² + bx + c — shows the y-intercept (c)", topics: [7], mnemonic: "The 'default' way to write a quadratic. c is the y-intercept (plug x=0; everything else vanishes)." },
+    { term: "Standard form (quadratic)", def: "y = ax² + bx + c — shows the y-intercept (c)", topics: [7, 14], mnemonic: "The 'default' way to write a quadratic. c is the y-intercept (plug x=0; everything else vanishes)." },
     { term: "Intercept form", def: "y = a(x − p)(x − q) — shows x-intercepts at p and q", topics: [8], mnemonic: "Form named for what it shows: the INTERCEPTS (roots). At +p and +q — but sign flips!" },
     { term: "Square root", def: "Opposite of squaring. √25 = 5 because 5² = 25.", topics: [11], mnemonic: "The UN-DO button for squaring. If you squared, then √ takes you back." },
     { term: "Plus or minus (±)", def: "Means TWO answers — one positive, one negative", topics: [11, 12, 13], mnemonic: "Both +5 AND −5 squared give 25. Un-squaring gives BOTH back. NEVER FORGET THE ±." },
@@ -1187,8 +1267,8 @@ const FLASHCARDS = {
     { term: "GCF for variables", def: "Take the SMALLEST power that appears in every term", topics: [3], mnemonic: "SMALLEST POWER WINS. Can't pull out more x's than the term with the fewest." },
     { term: "Zero Product Property", def: "If ab = 0 then a = 0 OR b = 0", topics: [10], mnemonic: "One of you must be zero. The math version of 'one of you is the problem.'" },
     { term: "Vertex form vertex", def: "y = a(x − h)² + k → vertex is (h, k). Sign of h FLIPS!", topics: [9], mnemonic: "(x − 3)² means h = +3 (sign FLIPS inside). k stays the same as written outside." },
-    { term: "Standard form AOS", def: "Axis of symmetry: x = −b / (2a). Plug in for vertex y.", topics: [7], mnemonic: "NEGATIVE B over TWO A. Then plug that x back in to find vertex y." },
-    { term: "Standard form y-intercept", def: "y-intercept is (0, c)", topics: [7], mnemonic: "Plug x=0. Everything with an x vanishes. Only c is left = y-intercept." },
+    { term: "Standard form AOS", def: "Axis of symmetry: x = −b / (2a). Plug in for vertex y.", topics: [7, 14], mnemonic: "NEGATIVE B over TWO A. Then plug that x back in to find vertex y." },
+    { term: "Standard form y-intercept", def: "y-intercept is (0, c)", topics: [7, 14], mnemonic: "Plug x=0. Everything with an x vanishes. Only c is left = y-intercept." },
     { term: "Intercept form roots", def: "y = a(x − p)(x − q) → roots at +p and +q (sign flips!). AOS = (p+q)/2.", topics: [8], mnemonic: "Roots come right out. AOS is the AVERAGE — halfway between the two roots." },
     { term: "Direction of parabola", def: "a > 0 opens up (smile). a < 0 opens down (frown).", topics: [7, 8, 9], mnemonic: "SMILE 🙂 up, FROWN 🙁 down. Positive feelings = positive a." },
     { term: "Width of parabola", def: "|a| > 1 narrower; |a| < 1 wider; |a| = 1 standard", topics: [7, 9], mnemonic: "BIGGER a = SKINNIER. Counter-intuitive! (Think: confident skinny person = strong reaction.)" },
@@ -1316,6 +1396,13 @@ const QUIZ_BANK = {
     { q: "If the discriminant is 0, how many real solutions does the quadratic have?", a: ["0", "1", "2", "Infinite"], correct: 1, why: "Discriminant = 0 → one repeated solution (parabola just touches x-axis at one point)." },
     { q: "Solve using the quadratic formula: x² + 7x + 10 = 0", a: ["x = −2, −5", "x = 2, 5", "x = −2, 5", "x = 2, −5"], correct: 0, why: "a=1, b=7, c=10. Disc=49−40=9. x=(−7±3)/2 → x=−2 or −5." },
     { q: "What's the quadratic formula?", a: ["x = b² − 4ac", "x = (b ± √(b² − 4ac)) / 2a", "x = (−b ± √(b² − 4ac)) / 2a", "x = −b/2a"], correct: 2, why: "x = (−b ± √(b² − 4ac)) / 2a. Sing it to 'Pop Goes the Weasel'!" }
+  ],
+  14: [
+    { q: "Find the AOS of y = x² − 8x + 12.", a: ["x = −4", "x = 4", "x = 8", "x = −8"], correct: 1, why: "AOS = −b/(2a) = −(−8)/(2·1) = 8/2 = 4. Watch the double negative." },
+    { q: "What is the y-intercept of y = 2x² + 3x − 7?", a: ["(0, 7)", "(0, −7)", "(0, 3)", "(0, 2)"], correct: 1, why: "y-intercept in standard form is always (0, c). Here c = −7." },
+    { q: "Find the vertex of y = x² − 6x + 5.", a: ["(3, −4)", "(−3, 4)", "(3, 4)", "(−3, −4)"], correct: 0, why: "AOS x = 6/2 = 3. Plug in: y = 9 − 18 + 5 = −4. Vertex (3, −4)." },
+    { q: "For y = ax² + bx + c, the axis of symmetry is at:", a: ["x = b/(2a)", "x = −b/(2a)", "x = −b/a", "x = c"], correct: 1, why: "AOS formula: x = −b / (2a). Negative b over two a." },
+    { q: "Using the ax² heights pattern with a = 2, the y-value 1 step left/right of the vertex changes by:", a: ["1", "2", "4", "8"], correct: 1, why: "Heights pattern: 1 step = a·1 = a. With a=2, that's 2. (2 steps = 4a = 8, 3 steps = 9a = 18.)" }
   ]
 };
 
@@ -1351,14 +1438,14 @@ function getDayInfo() {
     "Day 8 (Sun May 24): Topic 7 — Basic Parabolas (with Nate)",
     "Day 9 (Mon May 25): Topic 8 — Intercept Form (with Nate)",
     "Day 10 (Tue May 26): Topic 9 — Vertex Form (with Nate)",
-    "Day 11 (Wed May 27): Mini-Quiz #2 — Topics 6–9",
-    "Day 12 (Thu May 28): Topic 10 — Solving by Factoring (with Nate)",
-    "Day 13 (Fri May 29): Topic 11 — Square Roots (with Nate)",
-    "Day 14 (Sat May 30): Topic 12 — Completing the Square (with Nate)",
-    "Day 15 (Sun May 31): Topic 13 — Quadratic Formula (with Nate)",
-    "Day 16 (Mon Jun 1): Full Mock Test (with Nate)",
-    "Day 17 (Tue Jun 2): Targeted review of mock-test gaps",
-    "Day 18 (Wed Jun 3): Light review + confidence",
+    "Day 11 (Wed May 27): Topic 14 — Graphing Standard Form (with Nate) — capstone of graphing block",
+    "Day 12 (Thu May 28): Mini-Quiz #2 — Topics 6–9 + 14",
+    "Day 13 (Fri May 29): Topic 10 — Solving by Factoring (with Nate)",
+    "Day 14 (Sat May 30): Topic 11 — Square Roots (with Nate)",
+    "Day 15 (Sun May 31): Topic 12 — Completing the Square (with Nate)",
+    "Day 16 (Mon Jun 1): Topic 13 — Quadratic Formula (with Nate)",
+    "Day 17 (Tue Jun 2): Full Mock Test (with Nate)",
+    "Day 18 (Wed Jun 3): Targeted review of mock-test gaps + confidence",
     "Day 19 (Thu Jun 4): 🎯 TEST DAY"
   ];
   if (dayNum < 1) return "Get ready! Plan starts Sun May 17.";
@@ -1394,7 +1481,8 @@ const TOPIC_GUIDE_FILES = {
   10: "10 — Solving by Factoring (7.4).md",
   11: "11 — Solving by Square Roots (9.3).md",
   12: "12 — Completing the Square (9.4).md",
-  13: "13 — Quadratic Formula (9.5).md"
+  13: "13 — Quadratic Formula (9.5).md",
+  14: "14 — Graphing Standard Form (8.3).md"
 };
 const TOPIC_GUIDE_CACHE = {};
 
@@ -1944,7 +2032,8 @@ const TOPIC_NAMES_PRAC = {
   10: "Solving by Factoring",
   11: "Solving by Square Roots",
   12: "Completing the Square",
-  13: "Quadratic Formula"
+  13: "Quadratic Formula",
+  14: "Graphing Standard Form"
 };
 
 const PRACTICE_GENERATORS = {
@@ -2516,6 +2605,68 @@ const PRACTICE_GENERATORS = {
     };
   },
 
+  14: (difficulty = 'easy') => {
+    // Build a parabola with integer roots so AOS is integer/half-integer (clean for students)
+    const rMax = diffRange(4, 6, 8, difficulty);
+    let r1, r2;
+    do {
+      r1 = randInt(-rMax, rMax);
+      r2 = randInt(-rMax, rMax);
+    } while (r1 === r2);
+    // Pick a: easy=1, medium=1or2, hard=any small nonzero (incl. -1)
+    let a;
+    if (difficulty === 'easy') a = 1;
+    else if (difficulty === 'medium') a = randPick([1, 1, 2]);
+    else a = randPick([1, 2, -1, -2]);
+    // a(x-r1)(x-r2) = a·x² - a(r1+r2)·x + a·r1·r2
+    const b = -a * (r1 + r2);
+    const c = a * r1 * r2;
+    const aosNum = -(r1 + r2);
+    const aosDen = 2;
+    const aosDisplay = (aosNum % aosDen === 0) ? `${aosNum / aosDen}` : `${aosNum}/${aosDen}`;
+    const aosX = -b / (2 * a);
+    const vertexY = a * aosX * aosX + b * aosX + c;
+    const mirrorX = 2 * aosX - 0; // mirror of x=0 across AOS
+    return {
+      problem: `Graph: ${fmtPoly([a, b, c])}. Find: (a) AOS, (b) vertex, (c) y-intercept, (d) one more point.`,
+      answer: `AOS x = ${aosDisplay}; vertex (${aosX}, ${vertexY}); y-int (0, ${c}); mirror of y-int (${mirrorX}, ${c})`,
+      difficulty,
+      overall: `Standard form y = ax² + bx + c hides the vertex — you have to compute it. The recipe: (1) AOS x = −b/(2a), (2) plug AOS back in for vertex y, (3) (0, c) is the free y-intercept, mirror it across AOS, (4) optionally use the ax² heights pattern (1a, 4a, 9a) for more points. Then smooth U through everything.`,
+      steps: [
+        {
+          title: "Step 1: Identify a, b, c",
+          narrative: `In ${fmtPoly([a, b, c])}, a is the coefficient of x² (${a}), b is the coefficient of x (${b}), c is the constant (${c}). Keep the signs!`,
+          math: `a = ${a}, b = ${b}, c = ${c}`
+        },
+        {
+          title: "Step 2: Find AOS using x = −b / (2a)",
+          narrative: `Plug into the AOS formula. Watch the sign: if b is negative, −b becomes positive (double negative cancels). x = −(${b}) / (2 · ${a}) = ${-b} / ${2 * a} = ${aosDisplay}.`,
+          math: `AOS: x = ${aosDisplay}`
+        },
+        {
+          title: "Step 3: Plug AOS back in to find vertex y",
+          narrative: `Substitute x = ${aosX} into ${fmtPoly([a, b, c])}: y = ${a}·(${aosX})² + (${b})·(${aosX}) + (${c}) = ${a * aosX * aosX} ${b * aosX >= 0 ? '+ ' + (b * aosX) : '− ' + Math.abs(b * aosX)} ${c >= 0 ? '+ ' + c : '− ' + Math.abs(c)} = ${vertexY}.`,
+          math: `Vertex: (${aosX}, ${vertexY})`
+        },
+        {
+          title: "Step 4: Plot the y-intercept at (0, c) and its mirror",
+          narrative: `In standard form, the y-intercept is ALWAYS (0, c). Here c = ${c}, so y-intercept is (0, ${c}). The mirror across AOS (x = ${aosX}) is at x = ${mirrorX}, same y-value. So plot (0, ${c}) and (${mirrorX}, ${c}).`,
+          math: `y-intercept: (0, ${c}); mirror: (${mirrorX}, ${c})`
+        },
+        {
+          title: "Step 5: Use the ax² heights pattern for more points",
+          narrative: `From the vertex, step 1 right and 1 left: y changes by ${a}·1 = ${a}. Step 2 right/left: y changes by ${a}·4 = ${4 * a}. So points 1 step from vertex: (${aosX + 1}, ${vertexY + a}) and (${aosX - 1}, ${vertexY + a}). Points 2 steps from vertex: (${aosX + 2}, ${vertexY + 4 * a}) and (${aosX - 2}, ${vertexY + 4 * a}).`,
+          math: `Heights from vertex: ±1 step → ${a >= 0 ? '+' : ''}${a}; ±2 steps → ${4 * a >= 0 ? '+' : ''}${4 * a}; ±3 steps → ${9 * a >= 0 ? '+' : ''}${9 * a}`
+        },
+        {
+          title: "Step 6: Smooth U through points, label vertex + AOS",
+          narrative: `Draw a smooth U through the vertex, y-intercept + mirror, and the heights-pattern points. ${a > 0 ? 'Opens UP (smile, a > 0).' : 'Opens DOWN (frown, a < 0).'} Label the vertex (${aosX}, ${vertexY}) and the dashed axis of symmetry x = ${aosDisplay}.`,
+          math: `Vertex (${aosX}, ${vertexY}); AOS x = ${aosDisplay}; opens ${a > 0 ? 'UP' : 'DOWN'}`
+        }
+      ]
+    };
+  },
+
   13: (difficulty = 'easy') => {
     const rMax = diffRange(5, 7, 9, difficulty);
     let r1, r2;
@@ -2631,6 +2782,99 @@ function tryHarder(idx) {
   currentProblems[idx] = gen(nextDiff);
   solutionsExpanded[idx] = false;
   renderProblems();
+}
+
+// Print-friendly practice sheet: page 1 = problems + work space, page 2 = answer key.
+// Matches how Esme is assessed (paper) per Mr. Mistry's May 2026 note.
+function printPracticeSheet() {
+  if (!currentProblems || currentProblems.length === 0) {
+    alert('Generate some problems first (click "🔄 New Problems").');
+    return;
+  }
+  const topicName = TOPIC_NAMES_PRAC[currentPracticeTopic] || `Topic ${currentPracticeTopic}`;
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  const modeLabel = difficultyMode === 'progressive' ? 'progressive' : difficultyMode;
+
+  const problemsHtml = currentProblems.map((p, i) => `
+    <div class="prob">
+      <div class="prob-num">${i + 1}.</div>
+      <div class="prob-body">
+        <div class="prob-q">${p.problem}</div>
+        <div class="work-space"></div>
+      </div>
+    </div>
+  `).join('');
+
+  const answersHtml = currentProblems.map((p, i) => `
+    <div class="ans">
+      <span class="ans-num">${i + 1}.</span>
+      <span class="ans-text">${p.answer}</span>
+    </div>
+  `).join('');
+
+  const html = `<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Practice Sheet — Topic ${currentPracticeTopic}: ${topicName}</title>
+<style>
+  @page { size: letter; margin: 0.5in; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #000; margin: 0; }
+  .page { padding: 0; min-height: 9.5in; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .sheet-header { border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 16px; }
+  .sheet-header h1 { font-size: 20px; margin: 0 0 4px 0; }
+  .sheet-header .meta { font-size: 12px; color: #444; display: flex; justify-content: space-between; }
+  .name-line { margin: 12px 0 18px 0; font-size: 12px; }
+  .name-line .field { display: inline-block; border-bottom: 1px solid #000; width: 220px; margin: 0 18px 0 4px; }
+  .prob { display: flex; gap: 10px; margin-bottom: 14px; page-break-inside: avoid; }
+  .prob-num { font-weight: bold; font-size: 14px; min-width: 24px; }
+  .prob-body { flex: 1; }
+  .prob-q { font-size: 14px; line-height: 1.4; margin-bottom: 6px; }
+  .work-space { height: 130px; border-bottom: 1px dashed #999; border-top: 1px dashed #ddd; background:
+    repeating-linear-gradient(transparent, transparent 25px, #eee 25px, #eee 26px); }
+  .key-header { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+  .key-sub { font-size: 11px; color: #666; margin-bottom: 14px; font-style: italic; }
+  .ans { font-size: 13px; margin-bottom: 8px; padding: 6px 8px; border-left: 3px solid #000; background: #f5f5f5; }
+  .ans-num { font-weight: bold; margin-right: 6px; }
+  .footer-note { margin-top: 18px; font-size: 10px; color: #888; text-align: center; border-top: 1px solid #ccc; padding-top: 6px; }
+  .toolbar { position: fixed; top: 10px; right: 10px; background: #fff; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: -apple-system, sans-serif; font-size: 12px; }
+  .toolbar button { font-size: 12px; padding: 6px 12px; cursor: pointer; }
+  @media print { .toolbar { display: none; } }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="window.print()">🖨️ Print</button>
+    <button onclick="window.close()">Close</button>
+  </div>
+  <div class="page">
+    <div class="sheet-header">
+      <h1>📝 Practice Sheet — Topic ${currentPracticeTopic}: ${topicName}</h1>
+      <div class="meta"><span>${currentProblems.length} problems · ${modeLabel}</span><span>${dateStr}</span></div>
+    </div>
+    <div class="name-line">Name:<span class="field"></span>Date:<span class="field" style="width: 120px;"></span>Score: ___ / ${currentProblems.length}</div>
+    ${problemsHtml}
+    <div class="footer-note">Algebra 1 Study Site · Topic ${currentPracticeTopic}: ${topicName} · Page 1 — Problems</div>
+  </div>
+  <div class="page">
+    <div class="sheet-header">
+      <div class="key-header">✅ Answer Key — Topic ${currentPracticeTopic}: ${topicName}</div>
+      <div class="key-sub">Self-check after working through page 1. If you missed one, open the site, hit "Show step-by-step solution" for that problem.</div>
+    </div>
+    ${answersHtml}
+    <div class="footer-note">Algebra 1 Study Site · Topic ${currentPracticeTopic}: ${topicName} · Page 2 — Answer Key</div>
+  </div>
+</body></html>`;
+
+  const w = window.open('', '_blank');
+  if (!w) {
+    alert('Popup blocked. Allow popups for this site to print practice sheets.');
+    return;
+  }
+  w.document.open();
+  w.document.write(html);
+  w.document.close();
 }
 
 function renderProblems() {
